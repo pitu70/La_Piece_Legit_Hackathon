@@ -1,0 +1,118 @@
+<!-- Content Sections -->
+        <div id="contentArea">
+            <!-- Introduction Section -->
+            <div class="content-section" id="introduction">
+                <div class="section-header-small">
+                    <div class="small-logo">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="smallLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00f0ff"/>
+                                    <stop offset="100%" style="stop-color:#ff00d4"/>
+                                </linearGradient>
+                            </defs>
+                            <polygon points="50,10 85,32 85,68 50,90 15,68 15,32" fill="none" stroke="url(#smallLogoGrad)" stroke-width="3"/>
+                            <circle cx="50" cy="50" r="10" fill="url(#smallLogoGrad)"/>
+                        </svg>
+                    </div>
+                    <div class="small-brand">
+                        <h3>Moon - Mars Space Website</h3>
+                        <p>Identify Earth Locations</p>
+                    </div>
+                </div>
+                <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+                
+                <!-- Hero Banner -->
+                <div class="intro-hero">
+                    <div class="intro-hero-content">
+                        <span class="intro-badge">Est. 2026</span>
+                        <h1 class="intro-headline">We Build Digital<br><span>Experiences</span> That Matter</h1>
+                        <p class="intro-subtext">Transforming visionary ideas into powerful digital realities through cutting-edge technology and creative excellence.</p>
+                        <div class="intro-cta-group">
+                            <button class="intro-cta-primary">Explore Our Work</button>
+                            <button class="intro-cta-secondary">Watch Showreel</button>
+                        </div>
+                    </div>
+                    <div class="intro-hero-visual">
+                        <div class="intro-floating-card card-1">
+                            <span class="card-icon">⚡</span>
+                            <span class="card-text">Lightning Fast</span>
+                        </div>
+                        <div class="intro-floating-card card-2">
+                            <span class="card-icon">🎯</span>
+                            <span class="card-text">Pixel Perfect</span>
+                        </div>
+                        <div class="intro-floating-card card-3">
+                            <span class="card-icon">🔒</span>
+                            <span class="card-text">Secure & Reliable</span>
+                        </div>
+                        <div class="intro-orb"></div>
+                    </div>
+                </div>
+
+                <!-- Metrics Strip -->
+                <div class="intro-metrics">
+                    <div class="metric-item">
+                        <span class="metric-value" data-target="500">0</span>
+                        <span class="metric-label">Projects Delivered</span>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric-item">
+                        <span class="metric-value" data-target="98">0</span>
+                        <span class="metric-suffix">%</span>
+                        <span class="metric-label">Client Retention</span>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric-item">
+                        <span class="metric-value" data-target="12">0</span>
+                        <span class="metric-label">Industry Awards</span>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric-item">
+                        <span class="metric-value">24/7</span>
+                        <span class="metric-label">Global Support</span>
+                    </div>
+                </div>
+
+<!-- Core Values -->
+                <div class="intro-values">
+                    <div class="value-card">
+                        <div class="value-number">01</div>
+                        <h3>Innovation First</h3>
+                        <p>We embrace emerging technologies and push creative boundaries to deliver solutions that set new industry standards.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-number">02</div>
+                        <h3>Human-Centered</h3>
+                        <p>Every pixel, every interaction is designed with real users in mind. We create experiences people genuinely love.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-number">03</div>
+                        <h3>Results Driven</h3>
+                        <p>Beautiful design meets measurable impact. We track, iterate, and optimize for outcomes that matter to your business.</p>
+                    </div>
+                </div>
+
+                <!-- Tech Stack Preview -->
+                <div class="intro-tech">
+                    <p class="tech-label">Technologies We Master</p>
+                    <div class="tech-marquee">
+                        <div class="tech-track">
+                            <span class="tech-item">React</span>
+                            <span class="tech-item">Next.js</span>
+                            <span class="tech-item">Node.js</span>
+                            <span class="tech-item">Python</span>
+                            <span class="tech-item">TensorFlow</span>
+                            <span class="tech-item">AWS</span>
+                            <span class="tech-item">Flutter</span>
+                            <span class="tech-item">Figma</span>
+                            <span class="tech-item">React</span>
+                            <span class="tech-item">Next.js</span>
+                            <span class="tech-item">Node.js</span>
+                            <span class="tech-item">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+     

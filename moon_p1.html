@@ -8,10 +8,26 @@
 </head>
 <body>
     <div class="container" style="padding-top: 40px;">
+        <div class="header"
+        id="mainheader">
+            <p class="section-title">ANALISIS ANALOGI: BUMI ↔ BULAN</p
+        ></div>
         <a href="index.html" class="back-btn" style="display:inline-block; margin-bottom:20px;">← Kembali</a>
-        <h2 class="section-title">ANALISIS ANALOGI: BUMI ↔ BULAN</h2>
         <!-- Programmer 1 mulai ngoding form & tabel perbandingan Bumi-Bulan di sini -->
     </div>
+
+    <div calss="form group">
+        <label for="destinationSelect"> Pilih Lokasi Moon:</label>
+        <select id="destinationSelect" onchange="updateLocationOptions()">
+            <option value="">Pilih Lokasi</option>
+            <option value="moon">Cold Spot 1</option>
+            <option value="moon">Cold Spot 2</option>
+            <option value="moon">Cold Spot 3</option>
+            <option value="moon">Tycho Creater</option>
+
+
+    </div>
+
     <script src="js/moon-logic.js"></script>
 </body>
 </html>

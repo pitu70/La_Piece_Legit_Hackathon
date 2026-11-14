@@ -1,38 +1,1231 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terra Analog - NASA Hackathon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Syne:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/templatemo-nexaverse.css">
-    <link rel="stylesheet" href="css/custom-hackathon.css">
+
+    <title>TERRA ANALOG | Planetary Exploration</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+    /* =================================
+       1. GLOBAL SETTINGS
+    ================================= */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: #070810;
+        color: white;
+        font-family: 'Outfit', sans-serif;
+        overflow-x: hidden;
+    }
+
+    :root {
+        --cyan: #50e8f0;
+        --mars: #ff7958;
+        --moon: #c5d0e6;
+        --white: #f5f5f8;
+    }
+
+
+    /* =================================
+       2. GALAXY BACKGROUND
+    ================================= */
+
+    .space-bg {
+        position: fixed;
+        inset: 0;
+        z-index: -5;
+
+        background:
+            linear-gradient(
+                rgba(5,7,15,.55),
+                rgba(5,7,15,.78)
+            ),
+            url("images/galaxy-bg.jpg")
+            center / cover no-repeat,
+            #070810;
+    }
+
+    .space-bg::after {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        background-image:
+            linear-gradient(
+                rgba(255,255,255,.035) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255,255,255,.035) 1px,
+                transparent 1px
+            );
+
+        background-size: 65px 65px;
+    }
+
+
+    /* =================================
+       3. MAIN CONTAINER
+    ================================= */
+
+    .container {
+        width: 90%;
+        max-width: 1500px;
+        margin: auto;
+        min-height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    /* =================================
+       4. NAVIGATION
+    ================================= */
+
+    .navbar {
+        height: 90px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        border-bottom: 1px solid rgba(255,255,255,.12);
+
+        position: relative;
+        z-index: 20;
+    }
+
+    .logo {
+        font-family: 'Syne', sans-serif;
+        font-size: 23px;
+        font-weight: 800;
+        letter-spacing: 3px;
+        color: white;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .logo span {
+        color: var(--cyan);
+    }
+
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 42px;
+    }
+
+    .nav-menu a {
+        position: relative;
+
+        color: #c5c6d0;
+        text-decoration: none;
+
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+
+        transition: .3s;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+        color: var(--cyan);
+    }
+
+    .nav-menu a::after {
+        content: "";
+
+        position: absolute;
+        left: 0;
+        bottom: -9px;
+
+        width: 0;
+        height: 2px;
+
+        background: var(--cyan);
+
+        transition: .3s;
+    }
+
+    .nav-menu a:hover::after,
+    .nav-menu a.active::after {
+        width: 100%;
+    }
+
+    .system-status {
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: #a7a7b2;
+        white-space: nowrap;
+    }
+
+    .system-status span {
+        display: inline-block;
+
+        width: 7px;
+        height: 7px;
+
+        margin-right: 8px;
+
+        border-radius: 50%;
+        background: #50e8a0;
+
+        box-shadow: 0 0 10px #50e8a0;
+    }
+
+
+    /* =================================
+       5. HERO SECTION
+    ================================= */
+
+    .hero {
+        position: relative;
+
+        min-height: 760px;
+        flex: 1;
+
+        margin: 35px 0;
+
+        overflow: hidden;
+
+        border: 1px solid rgba(255,255,255,.14);
+
+        background: rgba(5,7,15,.25);
+
+        box-shadow:
+            0 20px 80px rgba(0,0,0,.4),
+            inset 0 0 100px rgba(0,0,0,.3);
+    }
+
+    /* Corner decoration */
+
+    .hero::before,
+    .hero::after {
+        content: "";
+
+        position: absolute;
+
+        width: 55px;
+        height: 55px;
+
+        border-color: rgba(255,130,100,.6);
+        border-style: solid;
+
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    .hero::before {
+        top: 18px;
+        left: 18px;
+        border-width: 2px 0 0 2px;
+    }
+
+    .hero::after {
+        bottom: 18px;
+        right: 18px;
+        border-width: 0 2px 2px 0;
+    }
+
+
+    /* =================================
+       6. PLANET TITLE
+    ================================= */
+
+    .planet-heading {
+        position: relative;
+        z-index: 2;
+
+        text-align: center;
+        padding-top: 55px;
+
+        pointer-events: none;
+    }
+
+    .planet-heading p {
+        font-size: 13px;
+        letter-spacing: 6px;
+        color: #d0d0d8;
+
+        margin-bottom: 5px;
+    }
+
+    .planet-heading h1 {
+        font-family: 'Syne', sans-serif;
+
+        font-size: clamp(90px, 15vw, 210px);
+
+        font-weight: 700;
+        letter-spacing: 12px;
+        line-height: 1;
+
+        color: #f5f5f8;
+
+        text-shadow: 0 5px 40px rgba(0,0,0,.3);
+
+        transition: .4s;
+    }
+
+
+    /* =================================
+       7. PLANET IMAGE
+    ================================= */
+
+    .planet-stage {
+        position: absolute;
+
+        width: 500px;
+        height: 500px;
+
+        left: 50%;
+        top: 48%;
+
+        transform: translate(-50%, -40%);
+
+        z-index: 1;
+
+        display: grid;
+        place-items: center;
+
+        transition: opacity .4s, transform .5s;
+    }
+
+    .planet-stage.changing {
+        opacity: 0;
+        transform: translate(-50%, -40%) scale(.92);
+    }
+
+    .planet-image {
+        width: 82%;
+        height: 82%;
+
+        border-radius: 50%;
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        box-shadow:
+            inset -45px -25px 65px rgba(0,0,0,.85),
+            inset 10px 10px 30px rgba(255,255,255,.12),
+            0 0 75px rgba(255,120,80,.16);
+    }
+
+    .planet-image.mars {
+        background-image: url("images/mars.jpg");
+    }
+
+    .planet-image.moon {
+        background-image: url("images/moon.jpg");
+
+        box-shadow:
+            inset -45px -25px 65px rgba(0,0,0,.85),
+            inset 10px 10px 30px rgba(255,255,255,.12),
+            0 0 75px rgba(170,190,230,.18);
+    }
+
+    .planet-shadow {
+        position: absolute;
+
+        width: 90%;
+        height: 15%;
+
+        bottom: 0;
+
+        background: rgba(0,0,0,.5);
+        filter: blur(35px);
+        border-radius: 50%;
+
+        z-index: -1;
+    }
+
+
+    /* =================================
+       8. PLANET INFORMATION
+    ================================= */
+
+    .info-panel {
+        position: absolute;
+
+        top: 58%;
+
+        width: 230px;
+
+        padding: 23px;
+
+        background: rgba(10,12,20,.78);
+
+        backdrop-filter: blur(12px);
+
+        border: 1px solid rgba(255,130,100,.4);
+
+        z-index: 4;
+    }
+
+    .info-left {
+        left: 55px;
+    }
+
+    .info-right {
+        right: 55px;
+
+        border-color: rgba(80,232,240,.35);
+    }
+
+    .info-panel h3 {
+        font-size: 11px;
+        letter-spacing: 3px;
+
+        margin-bottom: 20px;
+
+        color: var(--mars);
+    }
+
+    .info-right h3 {
+        color: var(--cyan);
+    }
+
+    .info-panel small {
+        display: block;
+
+        font-size: 10px;
+        letter-spacing: 1px;
+
+        color: #999eaa;
+
+        margin-bottom: 5px;
+    }
+
+    .info-panel strong {
+        display: block;
+
+        font-size: 14px;
+        font-weight: 500;
+
+        margin-bottom: 18px;
+    }
+
+    .target-value {
+        font-size: 23px !important;
+        color: var(--cyan);
+    }
+
+    .info-right p {
+        color: #aeb1bd;
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+
+    /* =================================
+       9. MISSION BUTTON
+    ================================= */
+
+    .mission-bottom {
+        position: absolute;
+
+        left: 50%;
+        bottom: 32px;
+
+        transform: translateX(-50%);
+
+        width: 440px;
+
+        text-align: center;
+
+        z-index: 5;
+    }
+
+    .mission-bottom h3 {
+        font-size: 12px;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+    }
+
+    .mission-bottom p {
+        color: #b6b7c1;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .explore-button {
+        display: inline-block;
+
+        padding: 15px 35px;
+
+        background: linear-gradient(
+            100deg,
+            #f36c4b,
+            #d94c83
+        );
+
+        color: white;
+        text-decoration: none;
+
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2px;
+
+        transition: .3s;
+    }
+
+    .explore-button:hover {
+        transform: translateY(-4px);
+
+        box-shadow:
+            0 0 30px rgba(255,100,80,.5);
+    }
+
+
+    /* =================================
+       10. PLANET SELECTOR
+    ================================= */
+
+    .planet-selector {
+        position: absolute;
+
+        left: 25px;
+        top: 43%;
+
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        z-index: 6;
+    }
+
+    .planet-selector button {
+        width: 46px;
+        height: 46px;
+
+        border: 1px solid rgba(255,255,255,.3);
+
+        background: rgba(0,0,0,.6);
+
+        color: white;
+
+        font-size: 12px;
+        font-weight: 700;
+
+        cursor: pointer;
+
+        transition: .3s;
+    }
+
+    .planet-selector button:hover,
+    .planet-selector button.active {
+        border-color: var(--mars);
+        background: rgba(255,100,70,.2);
+
+        transform: translateX(4px);
+    }
+
+
+    /* =================================
+       11. SLIDE INDICATORS
+    ================================= */
+
+    .slide-indicators {
+        position: absolute;
+
+        right: 25px;
+        top: 45%;
+
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+
+        z-index: 6;
+    }
+
+    .slide-indicators button {
+        width: 9px;
+        height: 9px;
+
+        border: none;
+
+        background: rgba(255,255,255,.3);
+
+        cursor: pointer;
+    }
+
+    .slide-indicators button.active {
+        background: var(--mars);
+
+        box-shadow: 0 0 12px var(--mars);
+    }
+
+
+    /* =================================
+       12. FOOTER
+    ================================= */
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+
+        padding: 15px 0;
+
+        font-size: 10px;
+        letter-spacing: 2px;
+
+        color: #777d8b;
+    }
+
+
+    /* =================================
+       13. ABOUT SECTION
+    ================================= */
+
+    .about-section {
+        padding: 100px 20px;
+        text-align: center;
+
+        border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .about-section h2 {
+        font-family: 'Syne', sans-serif;
+        font-size: 35px;
+        margin-bottom: 20px;
+    }
+
+    .about-section h2 span {
+        color: var(--cyan);
+    }
+
+    .about-section p {
+        max-width: 700px;
+        margin: auto;
+
+        color: #aeb1bd;
+        line-height: 1.8;
+        font-size: 15px;
+    }
+
+
+    /* =================================
+       14. RESPONSIVE DESIGN
+    ================================= */
+
+    @media(max-width: 1000px) {
+
+        .info-panel {
+            width: 190px;
+            padding: 17px;
+        }
+
+        .info-left {
+            left: 25px;
+        }
+
+        .info-right {
+            right: 25px;
+        }
+
+        .planet-stage {
+            width: 390px;
+            height: 390px;
+        }
+
+    }
+
+
+    @media(max-width: 700px) {
+
+        .container {
+            width: 95%;
+        }
+
+        .navbar {
+            height: auto;
+
+            padding: 20px 0;
+
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .nav-menu {
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .system-status {
+            display: none;
+        }
+
+        .hero {
+            min-height: 850px;
+            margin: 15px 0;
+        }
+
+        .planet-heading {
+            padding-top: 75px;
+        }
+
+        .planet-heading h1 {
+            font-size: 75px;
+            letter-spacing: 3px;
+        }
+
+        .planet-heading p {
+            font-size: 10px;
+            letter-spacing: 3px;
+        }
+
+        .planet-stage {
+            width: 300px;
+            height: 300px;
+            top: 38%;
+        }
+
+        .info-panel {
+            top: 58%;
+            width: 42%;
+            padding: 12px;
+        }
+
+        .info-left {
+            left: 10px;
+        }
+
+        .info-right {
+            right: 10px;
+        }
+
+        .info-panel strong {
+            font-size: 11px;
+        }
+
+        .target-value {
+            font-size: 15px !important;
+        }
+
+        .info-right p {
+            font-size: 10px;
+        }
+
+        .mission-bottom {
+            width: 90%;
+            bottom: 25px;
+        }
+
+        .mission-bottom p {
+            font-size: 11px;
+        }
+
+        .planet-selector {
+            left: 10px;
+        }
+
+        .planet-selector button {
+            width: 35px;
+            height: 35px;
+        }
+
+        .slide-indicators {
+            right: 10px;
+        }
+
+        .footer {
+            flex-direction: column;
+            text-align: center;
+            gap: 8px;
+        }
+
+    }
+
+    @media(prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            scroll-behavior: auto !important;
+            transition-duration: .01ms !important;
+        }
+    }
+
+    </style>
 </head>
+
+
 <body>
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loader-ring"></div>
-        <div class="loading-text">Processing Data...</div>
-    </div>
-    <div class="ambient-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
-    <div class="grid-overlay"></div>
 
-    <div class="container">
-        <div class="header" id="mainHeader">
-            <h1 class="brand-name">TERRA ANALOG</h1>
-            <p class="tagline">Identifikasi Lokasi Analogi Bumi – Bulan – Mars</p>
-        </div>
+    <!-- BACKGROUND -->
 
-        <div class="menu-grid" id="menuGrid">
-            <a href="moon_p1.html" class="menu-item initial-load" style="text-decoration: none; color: inherit;">
-                <div class="menu-badge" style="color: #00f0ff;">MN</div>
-                <div class="menu-title">BUMI ↔ BULAN</div>
+    <div class="space-bg"></div>
+
+
+    <main class="container">
+
+
+        <!-- NAVIGATION -->
+
+        <header class="navbar">
+
+            <a href="index.html" class="logo">
+                TERRA <span>ANALOG</span>
             </a>
-            <a href="mars_p2.html" class="menu-item initial-load" style="text-decoration: none; color: inherit;">
-                <div class="menu-badge" style="color: #ff5e3a;">MR</div>
-                <div class="menu-title">BUMI ↔ MARS</div>
-            </a>
-        </div>
-    </div>
-    <script src="js/templatemo-nexa-scripts.js"></script>
+
+            <nav class="nav-menu">
+
+                <a href="index.html" class="active">HOME</a>
+
+                <a href="#about">ABOUT US</a>
+
+                <a href="moon_p1.html">MOON</a>
+
+                <a href="mars_p2.html">MARS</a>
+
+            </nav>
+
+            <div class="system-status">
+                <span></span>
+                SYSTEM ONLINE
+            </div>
+
+        </header>
+
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+
+            <!-- TITLE -->
+
+            <div class="planet-heading">
+
+                <p id="planet-subtitle">
+                    EXPLORE THE RED PLANET
+                </p>
+
+                <h1 id="planet-title">
+                    MARS
+                </h1>
+
+            </div>
+
+
+
+            <!-- PLANET IMAGE -->
+
+            <div class="planet-stage" id="planet-stage">
+
+                <div class="planet-shadow"></div>
+
+                <div class="planet-image mars"
+                     id="planet-image">
+                </div>
+
+            </div>
+
+
+
+            <!-- LEFT INFORMATION -->
+
+            <div class="info-panel info-left">
+
+                <h3>PLANET PROFILE</h3>
+
+                <small id="label-one">MOONS</small>
+
+                <strong id="fact-one">
+                    PHOBOS · DEIMOS
+                </strong>
+
+                <small id="label-two">MEAN RADIUS</small>
+
+                <strong id="fact-two">
+                    3,390 KM
+                </strong>
+
+                <small id="label-three">SURFACE GRAVITY</small>
+
+                <strong id="fact-three">
+                    3.71 M/S²
+                </strong>
+
+            </div>
+
+
+
+            <!-- RIGHT INFORMATION -->
+
+            <div class="info-panel info-right">
+
+                <h3>MISSION TARGET</h3>
+
+                <small>PLANETARY ANALOG</small>
+
+                <strong class="target-value" id="planet-target">
+                    EARTH ↔ MARS
+                </strong>
+
+                <p id="planet-description">
+                    Discover Earth environments with
+                    similar characteristics to Mars.
+                </p>
+
+            </div>
+
+
+
+            <!-- BOTTOM MISSION -->
+
+            <div class="mission-bottom">
+
+                <h3 id="mission-title">
+                    YOUR NEXT FRONTIER
+                </h3>
+
+                <p id="mission-description">
+                    Find Earth environments that help us understand Mars.
+                </p>
+
+                <a href="mars_p2.html"
+                   class="explore-button"
+                   id="explore-button">
+
+                    EXPLORE ANALOGS ↗
+
+                </a>
+
+            </div>
+
+
+
+            <!-- PLANET SELECTOR -->
+
+            <div class="planet-selector">
+
+                <button type="button"
+                        data-planet="mars"
+                        class="active"
+                        aria-label="Select Mars">
+                    MR
+                </button>
+
+                <button type="button"
+                        data-planet="moon"
+                        aria-label="Select Moon">
+                    MN
+                </button>
+
+            </div>
+
+
+
+            <!-- INDICATORS -->
+
+            <div class="slide-indicators">
+
+                <button type="button"
+                        data-planet="mars"
+                        class="active"
+                        aria-label="Mars slide">
+                </button>
+
+                <button type="button"
+                        data-planet="moon"
+                        aria-label="Moon slide">
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <span>
+                OPEN DATA · PLANETARY SCIENCE · EARTH ANALOGS
+            </span>
+
+            <span>
+                TERRA ANALOG © 2026
+            </span>
+
+        </footer>
+
+
+
+        <!-- ABOUT US -->
+
+        <section class="about-section" id="about">
+
+            <h2>
+                ABOUT <span>TERRA ANALOG</span>
+            </h2>
+
+            <p>
+                Terra Analog is a planetary exploration interface
+                designed to identify Earth locations that share
+                environmental characteristics with the Moon and Mars.
+
+                Our goal is to support planetary research by exploring
+                terrestrial analog environments using scientific data.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- SLIDER JAVASCRIPT -->
+
+    <script>
+
+        const planets = {
+
+            mars: {
+
+                title: "MARS",
+
+                subtitle: "EXPLORE THE RED PLANET",
+
+                image: "mars",
+
+                facts: [
+                    ["MOONS", "PHOBOS · DEIMOS"],
+                    ["MEAN RADIUS", "3,390 KM"],
+                    ["SURFACE GRAVITY", "3.71 M/S²"]
+                ],
+
+                target: "EARTH ↔ MARS",
+
+                description:
+                    "Discover Earth environments with similar characteristics to Mars.",
+
+                mission:
+                    "Find Earth environments that help us understand Mars.",
+
+                link: "mars_p2.html"
+
+            },
+
+
+            moon: {
+
+                title: "MOON",
+
+                subtitle: "EXPLORE OUR NATURAL SATELLITE",
+
+                image: "moon",
+
+                facts: [
+                    ["ORBITING BODY", "EARTH"],
+                    ["MEAN RADIUS", "1,737 KM"],
+                    ["SURFACE GRAVITY", "1.62 M/S²"]
+                ],
+
+                target: "EARTH ↔ MOON",
+
+                description:
+                    "Discover Earth environments with characteristics relevant to lunar exploration.",
+
+                mission:
+                    "Explore Earth locations that can help us understand the Moon.",
+
+                link: "moon_p1.html"
+
+            }
+
+        };
+
+
+        let currentPlanet = "mars";
+
+        let autoSlide;
+
+        let isPaused = false;
+
+
+        // CHANGE PLANET
+
+        function changePlanet(planet) {
+
+            if (currentPlanet === planet) return;
+
+            const stage = document.getElementById("planet-stage");
+
+            stage.classList.add("changing");
+
+            currentPlanet = planet;
+
+            const data = planets[planet];
+
+
+            setTimeout(() => {
+
+                // TITLE
+
+                document.getElementById("planet-title").textContent =
+                    data.title;
+
+                document.getElementById("planet-subtitle").textContent =
+                    data.subtitle;
+
+
+                // IMAGE
+
+                const image = document.getElementById("planet-image");
+
+                image.className = "planet-image " + data.image;
+
+
+                // INFORMATION
+
+                data.facts.forEach((fact, index) => {
+
+                    const labels = [
+                        "label-one",
+                        "label-two",
+                        "label-three"
+                    ];
+
+                    const values = [
+                        "fact-one",
+                        "fact-two",
+                        "fact-three"
+                    ];
+
+                    document.getElementById(labels[index]).textContent =
+                        fact[0];
+
+                    document.getElementById(values[index]).textContent =
+                        fact[1];
+
+                });
+
+
+                // MISSION
+
+                document.getElementById("planet-target").textContent =
+                    data.target;
+
+                document.getElementById("planet-description").textContent =
+                    data.description;
+
+                document.getElementById("mission-description").textContent =
+                    data.mission;
+
+
+                // EXPLORE LINK
+
+                document.getElementById("explore-button").href =
+                    data.link;
+
+
+                // BUTTON STATE
+
+                document.querySelectorAll("[data-planet]").forEach(button => {
+
+                    button.classList.toggle(
+                        "active",
+                        button.dataset.planet === planet
+                    );
+
+                });
+
+
+                stage.classList.remove("changing");
+
+            }, 350);
+
+
+            restartSlider();
+
+        }
+
+
+
+        // AUTOMATIC SLIDER
+
+        function restartSlider() {
+
+            clearInterval(autoSlide);
+
+            autoSlide = setInterval(() => {
+
+                if (isPaused) return;
+
+                const nextPlanet =
+                    currentPlanet === "mars" ? "moon" : "mars";
+
+                changePlanet(nextPlanet);
+
+            }, 7000);
+
+        }
+
+
+
+        // MANUAL PLANET SELECTION
+
+        document.querySelectorAll("[data-planet]").forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                changePlanet(button.dataset.planet);
+
+            });
+
+        });
+
+
+
+        // PAUSE ON HOVER
+
+        const hero = document.querySelector(".hero");
+
+        hero.addEventListener("mouseenter", () => {
+            isPaused = true;
+        });
+
+        hero.addEventListener("mouseleave", () => {
+            isPaused = false;
+        });
+
+
+        // PAUSE WHEN TAB IS NOT ACTIVE
+
+        document.addEventListener("visibilitychange", () => {
+            isPaused = document.hidden;
+        });
+
+
+        // INITIALIZE
+
+        restartSlider();
+
+    </script>
+
 </body>
 </html>

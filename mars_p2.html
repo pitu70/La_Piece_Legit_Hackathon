@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mars Analog Mission System - La Piece Legit</title>
+    <title>Planetary Analog Mission System - La Piece Legit</title>
     <link rel="stylesheet" href="css/templatemo-nexaverse.css">
     <link rel="stylesheet" href="css/custom-hackathon.css">
 </head>
@@ -11,8 +11,14 @@
     <div class="mars-container">
         <header class="mars-header">
             <a href="index.html" class="btn-back">← Back to Welcome</a>
-            <h1>MARS ANALOG MISSION SYSTEM</h1>
-            <p class="subtitle">MOLA Topographic Mapping & Multi-Earth Analog Recommendations</p>
+            <h1>PLANETARY ANALOG MISSION SYSTEM</h1>
+            <p class="subtitle">Mars MOLA & Moon Topographic Mapping & Multi-Earth Analog Recommendations</p>
+            
+            <div style="margin-top: 1rem;">
+                <button class="btn-secondary" onclick="openDriveDataModal()" style="border-color: #38bdf8; color: #38bdf8;">
+                    📂 Preview Complete Earth, Mars & Moon Dataset (Google Drive)
+                </button>
+            </div>
         </header>
 
         <!-- MODE SELECTOR -->
@@ -21,7 +27,7 @@
             <p>Choose your method for exploring planetary analog locations:</p>
             <div class="mode-buttons">
                 <button id="btn-mode-manual" class="btn-primary active" onclick="selectMode('manual')">
-                    Manual Mode (Select Mars Location)
+                    Manual Mode (Select Target Location)
                 </button>
                 <button id="btn-mode-auto" class="btn-secondary" onclick="selectMode('auto')">
                     Automatic Mode (Multi-Parameter Filter)
@@ -29,10 +35,10 @@
             </div>
         </section>
 
-        <!-- MANUAL MODE: Select Mars Location + Hover Preview -->
+        <!-- MANUAL MODE: Select Target Location + Hover Preview -->
         <section id="step-manual-mars" class="card-panel">
             <div class="section-title-bar">
-                <h2>1. Select Mars Location (MOLA Topography Data)</h2>
+                <h2>1. Select Planetary Target Location (Mars & Moon Complete Data)</h2>
                 <span class="badge-info">Hover for preview • Click to analyze analogs</span>
             </div>
 
@@ -42,17 +48,16 @@
                 <!-- Hover Preview Panel -->
                 <div id="mars-hover-preview" class="preview-box">
                     <div class="preview-image-slot">
-                        <img id="preview-img" src="" alt="Mars Region Preview" style="display: none;">
+                        <img id="preview-img" src="" alt="Region Preview" style="display: none;">
                         <div id="preview-img-placeholder" class="img-placeholder-text">
-                            <span>[ MARS REGION PHOTO SLOT ]</span>
-                            <!-- PENANDA FOTO MARS: Masukkan path foto Mars kamu di variabel data JS atau ganti di sini -->
-                            <small id="preview-img-hint">Set path in marsLocationsData -> marsImagePath</small>
+                            <span>[ PLANETARY REGION PHOTO SLOT ]</span>
+                            <small id="preview-img-hint">Synced with local images directory</small>
                         </div>
                     </div>
                     <div class="preview-details">
                         <span id="preview-zone-tag" class="zone-tag">ZONE PREVIEW</span>
-                        <h3 id="preview-title">Select or Hover a Mars Coordinate Point</h3>
-                        <p id="preview-coords" class="coords-text">Coordinates: - | MOLA Elevation: -</p>
+                        <h3 id="preview-title">Select or Hover a Coordinate Point</h3>
+                        <p id="preview-coords" class="coords-text">Coordinates: - | Elevation: -</p>
                         <p id="preview-desc" class="desc-text">
                             Hover over the location buttons on the left to examine geological characteristics and topography before selecting.
                         </p>
@@ -65,10 +70,10 @@
         <section id="step-auto-mars" class="card-panel hidden">
             <div class="section-title-bar">
                 <h2>1B. Automatic Mode (Multi-Parameter Filtering)</h2>
-                <span class="badge-info">Filter MOLA & Earth analog scientific parameters</span>
+                <span class="badge-info">Filter Topography & Earth analog scientific parameters</span>
             </div>
 
-            <p>Adjust the mission parameters below to automatically match compatible Mars coordinates and Earth analogs:</p>
+            <p>Adjust the mission parameters below to automatically match compatible planetary coordinates and Earth analogs:</p>
 
             <div class="auto-form-grid">
                 <div class="form-group">
@@ -83,8 +88,8 @@
                         <option value="all">All Categories (Global)</option>
                         <option value="basin">Basins / Evaporite Salt Flats</option>
                         <option value="plains">Lowland Plains / Regolith</option>
-                        <option value="polar">Polar / Permafrost</option>
-                        <option value="volcanic">Volcanic / Highlands</option>
+                        <option value="polar">Polar / Permafrost / Lunar Highlands</option>
+                        <option value="volcanic">Volcanic / Caldera</option>
                     </select>
                 </div>
             </div>
@@ -98,9 +103,7 @@
             <!-- Automatic Results Container -->
             <div id="auto-result-container" class="hidden" style="margin-top: 1.5rem; border-top: 1px solid rgba(148,163,184,0.2); padding-top: 1.25rem;">
                 <h3>Matching Algorithm Results:</h3>
-                <div id="auto-result-list" class="multi-recommendation-grid" style="margin-top: 1rem;">
-                    <!-- Dynamically rendered via JS -->
-                </div>
+                <div id="auto-result-list" class="multi-recommendation-grid" style="margin-top: 1rem;"></div>
             </div>
         </section>
 
@@ -112,19 +115,15 @@
             </div>
 
             <div class="recommendation-layout">
-                <!-- Left Column: Selected Mars Target Summary -->
                 <div class="selected-mars-summary">
-                    <h4>Selected Mars Target Location</h4>
+                    <h4>Selected Planetary Target Location</h4>
                     <h3 id="rec-mars-name">-</h3>
                     <ul id="rec-mars-stats" class="stats-list"></ul>
                 </div>
 
-                <!-- Right Column: Multi-Earth Analogs Container -->
                 <div class="earth-matches-container">
-                    <h4 style="margin-bottom: 1rem; color: #38bdf8;">Compatible Earth Analogs (Ranked):</h4>
-                    <div id="earth-cards-grid" class="multi-recommendation-grid">
-                        <!-- Dynamically populated with all matching Earth analogs -->
-                    </div>
+                    <h4 style="margin-bottom: 1rem; color: #38bdf8;">Compatible Earth Analogs (Ranked from Drive Dataset):</h4>
+                    <div id="earth-cards-grid" class="multi-recommendation-grid"></div>
                 </div>
             </div>
 
@@ -147,23 +146,85 @@
                 <p id="eval-desc-status">Processing site feasibility based on scientific parameters...</p>
             </div>
 
-            <h3>Direct Parameter Comparison (Mars MOLA vs Primary Earth Analog)</h3>
+            <h3>Direct Parameter Comparison (Planetary Target vs Primary Earth Analog)</h3>
             <div class="table-responsive" style="overflow-x: auto; margin-top: 0.75rem;">
                 <table class="comparison-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem;">
                     <thead>
                         <tr style="background: rgba(15, 23, 42, 0.9); border-bottom: 2px solid #475569;">
                             <th style="padding: 10px; color: #94a3b8;">Scientific Parameter</th>
-                            <th style="padding: 10px; color: #f97316;">Mars Target (MOLA)</th>
+                            <th style="padding: 10px; color: #f97316;">Planetary Target</th>
                             <th style="padding: 10px; color: #10b981;">Top Earth Analog</th>
                             <th style="padding: 10px; color: #38bdf8;">Validation Status</th>
                         </tr>
                     </thead>
-                    <tbody id="comparison-table-body">
-                        <!-- Dynamically rendered via JS -->
-                    </tbody>
+                    <tbody id="comparison-table-body"></tbody>
                 </table>
             </div>
         </section>
+    </div>
+
+    <!-- GOOGLE DRIVE DATASET PREVIEW MODAL -->
+    <div id="drive-data-modal" class="modal-overlay hidden">
+        <div class="modal-content card-panel" style="max-width: 950px; width: 92%; max-height: 85vh; overflow-y: auto;">
+            <div class="section-title-bar">
+                <h2>📁 Planetary Analog Dataset Preview (Google Drive)</h2>
+                <button class="btn-secondary" onclick="closeDriveDataModal()" style="padding: 0.3rem 0.7rem; font-size: 0.8rem;">✕ Close</button>
+            </div>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.25rem;">
+                Complete dataset synchronized from Mars MOLA, 17 Moon Lunar Reconnaissance sites, and the 16 Earth Analog spreadsheet.
+            </p>
+
+            <!-- MARS DATASET SECTION -->
+            <h3 style="color: #f97316; margin-bottom: 0.5rem; font-size: 1.1rem;">1. Mars MOLA Topography & Target Zones (Complete)</h3>
+            <div class="table-responsive" style="overflow-x: auto; margin-bottom: 1.5rem;">
+                <table class="comparison-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                    <thead>
+                        <tr style="background: rgba(15, 23, 42, 0.9); border-bottom: 2px solid #475569;">
+                            <th style="padding: 8px; color: #f97316;">Mars Zone / Region</th>
+                            <th style="padding: 8px;">MOLA Sample</th>
+                            <th style="padding: 8px;">Coordinates (Lat, Lon)</th>
+                            <th style="padding: 8px;">Elevation (m)</th>
+                            <th style="padding: 8px;">Slope (°)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-mars-table-body"></tbody>
+                </table>
+            </div>
+
+            <!-- MOON DATASET SECTION -->
+            <h3 style="color: #38bdf8; margin-bottom: 0.5rem; font-size: 1.1rem;">2. Moon Topography & Highland/Crater Zones (17 Sites Complete)</h3>
+            <div class="table-responsive" style="overflow-x: auto; margin-bottom: 1.5rem;">
+                <table class="comparison-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                    <thead>
+                        <tr style="background: rgba(15, 23, 42, 0.9); border-bottom: 2px solid #475569;">
+                            <th style="padding: 8px; color: #38bdf8;">Moon Region / Crater</th>
+                            <th style="padding: 8px;">Mission Ref</th>
+                            <th style="padding: 8px;">Coordinates (Lat, Lon)</th>
+                            <th style="padding: 8px;">Elevation (m)</th>
+                            <th style="padding: 8px;">Slope (°)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-moon-table-body"></tbody>
+                </table>
+            </div>
+
+            <!-- EARTH DATASET SECTION -->
+            <h3 style="color: #10b981; margin-bottom: 0.5rem; font-size: 1.1rem;">3. Earth Analog Locations (16 Complete Sites)</h3>
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="comparison-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                    <thead>
+                        <tr style="background: rgba(15, 23, 42, 0.9); border-bottom: 2px solid #475569;">
+                            <th style="padding: 8px; color: #10b981;">Earth Analog Name</th>
+                            <th style="padding: 8px;">Terrain Type</th>
+                            <th style="padding: 8px;">Target Simulation</th>
+                            <th style="padding: 8px;">Coordinates (Lat, Lon)</th>
+                            <th style="padding: 8px;">Elevation (m)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-earth-table-body"></tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <script src="js/mars-logic.js"></script>

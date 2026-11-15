@@ -559,7 +559,7 @@ body {
     <!-- NAVIGATION -->
     <header class="navbar">
         <a href="index.html" class="logo">
-            TERRA <span>ANALOG</span>
+            LA PEACE <span>LEGIT</span>
         </a>
         <nav class="nav-menu">
             <a href="index.html" class="active">HOME</a>
@@ -593,9 +593,9 @@ body {
         <!-- LEFT INFORMATION -->
         <div class="info-panel info-left">
             <h3>PROFILE</h3>
-            <small id="label-one">MOONS</small>
+            <small id="label-one">ORBITING BODY</small>
             <strong id="fact-one">
-                PHOBOS · DEIMOS
+                EARTH
             </strong>
             <small id="label-two">MEAN RADIUS</small>
             <strong id="fact-two">
@@ -608,8 +608,8 @@ body {
         </div>
         <!-- RIGHT INFORMATION -->
         <div class="info-panel info-right">
-            <h3>MISSION TARGET</h3>
-            <small>PLANETARY ANALOG</small>
+            <h3>MISSION OBJECTIVE</h3>
+            <small>TERRESTRIAL ANALOGS</small>
             <strong class="target-value" id="planet-target">
                 EARTH ↔ MARS
             </strong>
@@ -621,7 +621,7 @@ body {
         <!-- BOTTOM MISSION -->
         <div class="mission-bottom">
             <h3 id="mission-title">
-                YOUR NEXT FRONTIER
+                YOUR NEXT EXPLORATION
             </h3>
             <p id="mission-description">
                 Find Earth environments that help us understand Mars.
@@ -665,16 +665,16 @@ body {
             OPEN DATA · PLANETARY SCIENCE · EARTH ANALOGS
         </span>
         <span>
-            TERRA ANALOG © 2026
+            LA PEACE LEGIT © 2026
         </span>
     </footer>
     <!-- ABOUT US -->
     <section class="about-section" id="about">
         <h2>
-            ABOUT <span>TERRA ANALOG</span>
+            ABOUT <span>LA PEACE LEGIT</span>
         </h2>
         <p>
-            Terra Analog is a planetary exploration interface
+            LA PEACE LEGIT is a planetary exploration interface
             designed to identify Earth locations that share
             environmental characteristics with the Moon and Mars.
             Our goal is to support planetary research by exploring
@@ -711,7 +711,7 @@ const planets = {
     },
     moon: {
         title: "MOON",
-        subtitle: "EXPLORE OUR NATURAL SATELLITE",
+        subtitle: "DISCOVER EARTH'S LUNAR ANALOGS",
         model: "models/moon.glb",
         facts: [
             ["ORBITING BODY", "EARTH"],
@@ -720,7 +720,7 @@ const planets = {
         ],
         target: "EARTH ↔ MOON",
         description:
-            "Discover Earth environments with characteristics relevant to lunar exploration.",
+            "Identify Earth’s environments that share geological and environmental characteristics with the lunar surface.",
         mission:
             "Explore Earth locations that can help us understand the Moon.",
         link: "moon_p1.html"
@@ -787,18 +787,30 @@ scene.add(fillLight);
 // =================================
 // 6. ORBIT CONTROLS
 // =================================
+
 const controls = new OrbitControls(
-    camera,
-    renderer.domElement
+camera,
+renderer.domElement
 );
+
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
+
+// ENABLE INTERACTIONS
 controls.enableZoom = true;
 controls.enablePan = true;
 controls.enableRotate = true;
+
+// DISABLE AUTO ROTATION
 controls.autoRotate = false;
-controls.minDistance = 1.5;
-controls.maxDistance = 8;
+
+// ZOOM RESTRICTION
+controls.minDistance = 3.2;
+controls.maxDistance = 5.5;
+
+// PAN RESTRICTION
+controls.minTargetRadius = 0;
+controls.maxTargetRadius = 0.5;
 // =================================
 // 7. GLTF LOADER
 // =================================
@@ -809,7 +821,7 @@ const loader = new GLTFLoader();
 function loadPlanetModel(path) {
     const requestID = ++loadingRequest;
     loadingText.classList.remove("hidden");
-    loadingText.textContent = "LOADING PLANET...";
+    loadingText.textContent = "LOADING 3D...";
     loader.load(
         path,
         function(gltf) {
@@ -860,7 +872,7 @@ function loadPlanetModel(path) {
                     xhr.loaded / xhr.total * 100
                 );
                 loadingText.textContent =
-                    "LOADING PLANET... " + progress + "%";
+                    "LOADING 3D... " + progress + "%";
             }
         },
         function(error) {

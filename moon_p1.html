@@ -6,6 +6,7 @@
     <title>Moon Analog Explorer - La Piece Legit</title>
     <link rel="stylesheet" href="css/templatemo-nexaverse.css">
     <link rel="stylesheet" href="css/custom-hackathon.css">
+<<<<<<< Updated upstream
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
 /* =====================================================
@@ -791,58 +792,70 @@ body::after {
 }
 
 </style>
+=======
+    <style>
+        /* Penyesuaian aksen warna Bulan */
+        .btn-primary { background: linear-gradient(135deg, #0284c7, #38bdf8); color: #0f172a; }
+        .btn-primary:hover { box-shadow: 0 4px 15px rgba(56, 189, 248, 0.45); }
+        .mars-loc-btn:hover, .mars-loc-btn.selected { background: rgba(56, 189, 248, 0.16); border-color: #38bdf8; }
+        .mars-loc-btn .elev-pill, .coords-text { color: #7dd3fc; }
+        .preview-box { border-color: rgba(56, 189, 248, 0.35); }
+        .img-placeholder-text span { color: #38bdf8; }
+        .location-btn-list { max-height: 460px; overflow-y: auto; padding-right: 6px; }
+    </style>
+>>>>>>> Stashed changes
 </head>
 <body>
-    <div class="moon-container">
+    <div class="mars-container">
         <!-- Header Navigasi -->
-        <header class="moon-header">
-            <a href="index.html" class="btn-back">← Back to Menu</a>
+        <header class="mars-header">
+            <a href="index.html" class="btn-back">← Home Page</a>
             <h1>MOON ANALOG MISSION SYSTEM</h1>
-            <p class="subtitle">Pemetaan Topografi LOLA & Rekomendasi Analogi Lingkungan Bumi</p>
+            <p class="subtitle">LOLA Topographic Mapping & Earth Environmental Analogy Recommendations</p>
         </header>
 
-        <!-- STEP 1: Pilih Manual atau Otomatis -->
+        <!-- Pilih Manual atau Otomatis -->
         <section id="step-mode-selector" class="card-panel">
-            <h2>Pilih Mode Analisis</h2>
-            <p>Tentukan metode pencarian lokasi analogi Bulan:</p>
+            <h2>Select Analysis Mode</h2>
+            <p>Determine the method of searching for the location of the Moon analogy:</p>
             <div class="mode-buttons">
                 <button id="btn-mode-manual" class="btn-primary active" onclick="selectMode('manual')">
-                    Mode Manual (Pilih Lokasi Bulan)
+                    Manual Mode (Select Moon Location)
                 </button>
                 <button id="btn-mode-auto" class="btn-secondary" onclick="selectMode('auto')">
-                    Mode Otomatis (Input Multi-Parameter)
+                    Automatic Mode (Multi-Parameter input)
                 </button>
             </div>
         </section>
 
-        <!-- STEP 2A: Jalur Manual - Pilih Lokasi di Bulan + Hover Preview -->
+        <!-- Pilih Lokasi di Bulan -->
         <section id="step-manual-moon" class="card-panel">
             <div class="section-title-bar">
-                <h2>1. Pilih Lokasi di Bulan (Data Topografi LOLA / Diviner)</h2>
-                <span class="badge-info">Arahkan kursor untuk pratinjau • Klik untuk analisis analogi</span>
+                <h2>1. Select Moon Location (17 LOLA & Diviner Data Points)</h2>
+                <span class="badge-info">Hover to preview • Click for analogy analysis</span>
             </div>
 
-            <div class="moon-selector-grid">
+            <div class="mars-selector-grid">
                 <!-- Kolom Kiri: Daftar Tombol Zona Bulan -->
                 <div id="moon-location-buttons" class="location-btn-list">
-                    <!-- Tombol di-generate otomatis oleh moon-logic.js -->
+                    
                 </div>
 
-                <!-- Kolom Kanan: Panel Hover Preview (Foto + Penjelasan Singkat) -->
+                <!-- Kolom Kanan: Foto + Penjelasan Singkat -->
                 <div id="moon-hover-preview" class="preview-box">
                     <div class="preview-image-slot">
                         <img id="preview-img" src="" alt="Pratinjau Wilayah Bulan" style="display: none;">
                         <div id="preview-img-placeholder" class="img-placeholder-text">
                             <span>[ Slot Foto Wilayah Bulan ]</span>
-                            <small id="preview-img-hint">Arahkan kursor ke salah satu tombol lokasi di samping</small>
+                            <small id="preview-img-hint">Hover over one of the location buttons next to</small>
                         </div>
                     </div>
                     <div class="preview-details">
-                        <span id="preview-zone-tag" class="zone-tag">PRATINJAU ZONA</span>
-                        <h3 id="preview-title">Pilih atau Sentuh Titik Koordinat Bulan</h3>
-                        <p id="preview-coords" class="coords-text">Koordinat: - | Elevasi LOLA: -</p>
+                        <span id="preview-zone-tag" class="zone-tag">ZONE PREVIEW</span>
+                        <h3 id="preview-title">Select Moon Coordinate Point</h3>
+                        <p id="preview-coords" class="coords-text">Coordinates: - | LOLA Elevation: -</p>
                         <p id="preview-desc" class="desc-text">
-                            Arahkan kursor ke tombol lokasi di sebelah kiri untuk melihat karakteristik geologi, kemiringan (slope), dan suhu siang sebelum memilih.
+                            Hover over the location buttons to view geological and topographical characteristics before making a selection.
                         </p>
                     </div>
                 </div>
@@ -852,14 +865,14 @@ body::after {
         <!-- STEP 3A: Output Rekomendasi Analogi (Bumi) + Alasan Ilmiah -->
         <section id="step-earth-recommendation" class="card-panel hidden">
             <div class="section-title-bar">
-                <h2>2. Rekomendasi Analogi (Bumi)</h2>
-                <span id="match-score-badge" class="score-badge">Skor Kecocokan: -%</span>
+                <h2>2. Earth Analogy Recommendations</h2>
+                <span id="match-score-badge" class="score-badge">Match Score: -%</span>
             </div>
 
             <div class="recommendation-layout">
                 <!-- Ringkasan Titik Bulan Terpilih -->
-                <div class="selected-moon-summary">
-                    <h4>Target Lokasi Bulan Terpilih</h4>
+                <div class="selected-mars-summary">
+                    <h4>Selected Moon Location</h4>
                     <h3 id="rec-moon-name">-</h3>
                     <ul id="rec-moon-stats" class="stats-list"></ul>
                 </div>
@@ -867,17 +880,17 @@ body::after {
                 <!-- Hasil Rekomendasi Bumi & Alasan -->
                 <div class="earth-match-card">
                     <div class="earth-header">
-                        <span class="badge-earth">REKOMENDASI ANALOGI BUMI</span>
+                        <span class="badge-earth">EARTH ANALOGY RECOMMENDATIONS</span>
                         <h3 id="rec-earth-name">-</h3>
                         <p id="rec-earth-country" class="country-text">-</p>
                     </div>
 
                     <div class="earth-data-grid" id="rec-earth-metrics">
-                        <!-- Parameter Bumi dari dataset NASA di-render di sini -->
+                        <!-- Parameter Bumi di-render di sini -->
                     </div>
 
                     <div class="scientific-reason-box">
-                        <h4>🔬 Alasan Ilmiah Direkomendasikan:</h4>
+                        <h4>🔬 Scientific Reasons for Recommendation:</h4>
                         <ul id="rec-reasons-list">
                             <!-- Poin alasan kecocokan ilmiah di-render di sini -->
                         </ul>
@@ -886,20 +899,91 @@ body::after {
                     <!-- Tombol Lanjut ke Tahap Flowchart Berikutnya -->
                     <div class="next-action-bar">
                         <button id="btn-proceed-flowchart" class="btn-primary">
-                            Lanjut Evaluasi Skor & Perbandingan →
+                            Next: Evaluate Scores & Comparisons →
                         </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Placeholder Tahap 2 (Mode Otomatis - Akan kita kerjakan setelah Tahap 1 oke) -->
+                <!-- STEP 2B: Mode Otomatis (Input Multi-Parameter Target Bulan) -->
         <section id="step-auto-placeholder" class="card-panel hidden">
-            <h2>Mode Otomatis (Input Multi-Parameter Analogi)</h2>
-            <p><em>Bagian ini akan kita bangun di Tahap 2 setelah jalur Manual selesai direvisi.</em></p>
+            <div class="section-title-bar">
+                <h2>Automatic Mode (Multi-Parameter input)</h2>
+                <span class="badge-info">Matched against 11 Earth Location Datasets</span>
+            </div>
+
+            <div class="earth-data-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom: 1.25rem;">
+                <div class="metric-box" style="text-align:left;">
+                    <label for="auto-terrain-type" style="display:block; font-size:0.8rem; color:#94a3b8; margin-bottom:0.4rem;">Target Geological Type</label>
+                    <select id="auto-terrain-type" style="width:100%; padding:0.55rem; border-radius:6px; background:#0f172a; color:#fff; border:1px solid #475569;">
+                        <option value="all">All Geological Types</option>
+                        <option value="basalt">Basalt (Maria) - Lava Plains</option>
+                        <option value="highlands">Anorthosite (Highlands) - High Elevation Areas</option>
+                        <option value="crater">Impact Crater</option>
+                        <option value="polar">Polar Cold Spot</option>
+                    </select>
+                </div>
+
+                <div class="metric-box" style="text-align:left;">
+                    <label for="auto-slope" style="display:block; font-size:0.8rem; color:#94a3b8; margin-bottom:0.4rem;">Slope (°)</label>
+                    <input type="number" id="auto-slope" value="5.5" step="0.1" min="0" max="45" style="width:100%; padding:0.55rem; border-radius:6px; background:#0f172a; color:#fff; border:1px solid #475569;">
+                </div>
+
+                <div class="metric-box" style="text-align:left;">
+                    <label for="auto-feo" style="display:block; font-size:0.8rem; color:#94a3b8; margin-bottom:0.4rem;">Iron Content / FeO (%)</label>
+                    <input type="number" id="auto-feo" value="15.0" step="0.5" min="0" max="30" style="width:100%; padding:0.55rem; border-radius:6px; background:#0f172a; color:#fff; border:1px solid #475569;">
+                </div>
+
+                <div class="metric-box" style="text-align:left;">
+                    <label for="auto-temp-k" style="display:block; font-size:0.8rem; color:#94a3b8; margin-bottom:0.4rem;">Target Day Temperature (Kelvin)</label>
+                    <input type="number" id="auto-temp-k" value="380" step="5" min="150" max="410" style="width:100%; padding:0.55rem; border-radius:6px; background:#0f172a; color:#fff; border:1px solid #475569;">
+                </div>
+            </div>
+
+            <div style="text-align:right; margin-bottom:1.5rem;">
+                <button class="btn-primary" onclick="runAutoMoonMatch()">
+                    Cari Rekomendasi Analogi Bumi →
+                </button>
+            </div>
+
+            <!-- Wadah Output Peringkat Kecocokan Otomatis -->
+            <div id="auto-match-results" class="hidden"></div>
         </section>
+
     </div>
 
     <script src="js/moon-logic.js"></script>
 </body>
 </html>
+        <!-- STEP 3: Evaluasi Skor Kelayakan & Perbandingan Langsung (Bulan vs Bumi) -->
+        <section id="step-evaluation-panel" class="card-panel hidden" style="margin-top: 1.5rem;">
+            <div class="section-title-bar">
+                <h2>3. Evaluasi Skor Kelayakan & Perbandingan Langsung</h2>
+                <span id="eval-status-badge" class="score-badge">Status Misi: Menunggu Evaluasi</span>
+            </div>
+
+            <!-- Kontainer Evaluasi Berdasarkan Ambang Batas 75% -->
+            <div id="threshold-evaluation-box" class="evaluation-box" style="margin-bottom: 1.5rem; padding: 1.25rem; border-radius: 10px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(148, 163, 184, 0.2);">
+                <h3 id="eval-title-status" style="margin-top: 0; color: #38bdf8;">Analisis Ambang Batas (Threshold &ge; 75%)</h3>
+                <p id="eval-desc-status">Sistem sedang memproses kelayakan lokasi analogi Bulan berdasarkan parameter ilmiah...</p>
+            </div>
+
+            <!-- Tabel Perbandingan Side-by-Side (Bulan vs Bumi) -->
+            <h3>Perbandingan Parameter Langsung (Bulan LOLA/Diviner vs Analogi Bumi)</h3>
+            <div class="table-responsive" style="overflow-x: auto; margin-top: 0.75rem;">
+                <table class="comparison-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem;">
+                    <thead>
+                        <tr style="background: rgba(15, 23, 42, 0.9); border-bottom: 2px solid #475569;">
+                            <th style="padding: 10px; color: #94a3b8;">Parameter Sains</th>
+                            <th style="padding: 10px; color: #38bdf8;">Target Bulan (LOLA / Diviner)</th>
+                            <th style="padding: 10px; color: #10b981;">Analogi Bumi Terpilih</th>
+                            <th style="padding: 10px; color: #bae6fd;">Status Validasi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="comparison-table-body">
+                        <!-- Di-render dinamis via moon-logic.js -->
+                    </tbody>
+                </table>
+            </div>
+        </section>

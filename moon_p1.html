@@ -9,783 +9,286 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
-
 :root {
     --space: #070810;
     --space-light: #101321;
-
     --moon: #c5d0e6;
     --moon-light: #e4eaf5;
     --moon-dark: #8998b5;
-
     --cyan: #50e8f0;
     --white: #f5f5f8;
     --muted: #aeb1bd;
-
     --glass: rgba(12,15,27,0.82);
     --border: rgba(255,255,255,0.12);
-
     --font-heading: 'Syne', sans-serif;
     --font-body: 'Outfit', sans-serif;
 }
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
     background: #070810 !important;
     color: var(--white) !important;
     font-family: var(--font-body) !important;
     overflow-x: hidden;
 }
-
-/* 2. GALAXY BACKGROUND
-===================================================== */
-
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -2;
-
-    background:
-        linear-gradient(
-            rgba(5,7,15,.55),
-            rgba(5,7,15,.78)
-        ),
-        url("images/galaxy-bg.jpg")
-        center / cover no-repeat,
-        #070810;
+    background: linear-gradient(rgba(5,7,15,.55), rgba(5,7,15,.78)), url("images/galaxy-bg.jpg") center / cover no-repeat, #070810;
 }
-
 body::after {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.035) 1px,
-            transparent 1px
-        );
-
+    background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
     background-size: 65px 65px;
 }
-
 .moon-container {
     position: relative;
     z-index: 1;
-
     width: 92%;
     max-width: 1500px;
-
     margin: auto;
     padding-bottom: 60px;
 }
-
-/* 3. HEADER
-===================================================== */
-
 .moon-header {
     position: relative;
-
     padding: 45px 20px 55px;
     margin-bottom: 35px;
-
     text-align: center;
-
     border-bottom: 1px solid var(--border);
 }
-
 .moon-header h1 {
     font-family: var(--font-heading) !important;
-
     font-size: clamp(25px,4vw,48px);
     font-weight: 800;
-
     letter-spacing: 3px;
-
     color: var(--white);
-
     margin: 25px 0 15px;
-
-    text-shadow:
-        0 0 35px rgba(197,208,230,0.18);
+    text-shadow: 0 0 35px rgba(197,208,230,0.18);
 }
-
 .moon-header .subtitle {
     max-width: 850px;
-
     margin: auto;
-
     color: var(--muted);
-
     font-size: 14px;
     line-height: 1.8;
     letter-spacing: .5px;
 }
-
-/* Back Button */
-
 .btn-back {
     display: inline-block;
-
     position: absolute;
     top: 15px;
     left: 0;
-
     padding: 11px 20px;
-
     border: 1px solid rgba(197,208,230,.4);
-
     background: rgba(197,208,230,.07);
-
     color: var(--moon) !important;
-
     text-decoration: none;
-
     font-size: 11px;
     font-weight: 700;
-
     letter-spacing: 1px;
-
     transition: .3s;
 }
-
 .btn-back:hover {
     background: rgba(197,208,230,.16);
-
     border-color: var(--moon);
-
     transform: translateX(-4px);
 }
-
-/* 4. DASHBOARD PANELS
-===================================================== */
-
 .card-panel {
     position: relative;
-
     padding: 30px;
     margin-bottom: 25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20,24,40,.85),
-            rgba(8,11,21,.92)
-        ) !important;
-
+    background: linear-gradient(145deg, rgba(20,24,40,.85), rgba(8,11,21,.92)) !important;
     border: 1px solid var(--border) !important;
-
     border-radius: 3px !important;
-
-    box-shadow:
-        0 15px 45px rgba(0,0,0,.25),
-        inset 0 1px 0 rgba(255,255,255,.025);
-
+    box-shadow: 0 15px 45px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.025);
     backdrop-filter: blur(15px);
-
     transition: border-color .3s;
 }
-
-.card-panel:hover {
-    border-color: rgba(197,208,230,.3) !important;
-}
-
-.card-panel h2 {
-    font-family: var(--font-heading) !important;
-
-    color: var(--white) !important;
-
-    font-size: 20px;
-    font-weight: 700;
-
-    letter-spacing: .5px;
-
-    margin-bottom: 15px;
-}
-
-.card-panel h3 {
-    font-family: var(--font-heading) !important;
-    color: var(--white);
-}
-
-.card-panel h4 {
-    color: var(--white);
-    font-weight: 600;
-}
-
-.card-panel p {
-    color: var(--muted);
-
-    line-height: 1.8;
-    font-size: 13px;
-}
-
-/* Section Title */
-
+.card-panel:hover { border-color: rgba(197,208,230,.3) !important; }
+.card-panel h2 { font-family: var(--font-heading) !important; color: var(--white) !important; font-size: 20px; font-weight: 700; letter-spacing: .5px; margin-bottom: 15px; }
+.card-panel h3 { font-family: var(--font-heading) !important; color: var(--white); }
+.card-panel h4 { color: var(--white); font-weight: 600; }
+.card-panel p { color: var(--muted); line-height: 1.8; font-size: 13px; }
 .section-title-bar {
     display: flex;
-
     justify-content: space-between;
     align-items: center;
-
     gap: 15px;
     flex-wrap: wrap;
-
     padding-bottom: 18px;
     margin-bottom: 22px;
-
     border-bottom: 1px solid var(--border);
 }
-
-.section-title-bar h2 {
-    margin: 0;
-}
-
-/* 5. BADGES
-===================================================== */
-
-.badge-info,
-.score-badge,
-.zone-tag,
-.badge-earth {
+.section-title-bar h2 { margin: 0; }
+.badge-info, .score-badge, .zone-tag, .badge-earth {
     display: inline-block;
-
     padding: 7px 13px;
-
     font-size: 10px;
     font-weight: 700;
-
     letter-spacing: 1px;
     text-transform: uppercase;
-
     border: 1px solid rgba(197,208,230,.3);
-
     background: rgba(197,208,230,.07);
-
     color: var(--moon);
 }
-
-/* 6. BUTTON SYSTEM
-===================================================== */
-
-.btn-primary,
-.btn-secondary {
+.btn-primary, .btn-secondary {
     padding: 13px 22px;
-
     font-family: var(--font-body) !important;
-
     font-size: 12px;
     font-weight: 700;
-
     letter-spacing: 1px;
-
     border: 1px solid transparent;
     border-radius: 2px;
-
     cursor: pointer;
-
-    transition:
-        background .3s,
-        border-color .3s,
-        box-shadow .3s,
-        transform .3s;
+    transition: background .3s, border-color .3s, box-shadow .3s, transform .3s;
 }
-
 .btn-primary {
-    background:
-        linear-gradient(
-            100deg,
-            #aebbd3,
-            #50aebf
-        ) !important;
-
+    background: linear-gradient(100deg, #aebbd3, #50aebf) !important;
     color: #080d19 !important;
 }
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 8px 25px rgba(197,208,230,.2);
-}
-
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(197,208,230,.2); }
 .btn-secondary {
     background: rgba(80,232,240,.06) !important;
-
     color: var(--cyan) !important;
-
     border-color: rgba(80,232,240,.35) !important;
 }
-
-.btn-secondary:hover {
-    background: rgba(80,232,240,.15) !important;
-
-    box-shadow:
-        0 0 20px rgba(80,232,240,.1);
-
-    transform: translateY(-2px);
-}
-
-/* Mode Selector */
-
-.mode-buttons {
-    display: flex;
-
-    flex-wrap: wrap;
-    gap: 15px;
-
-    margin-top: 22px;
-}
-
-.mode-buttons button.active {
-    box-shadow:
-        0 0 25px rgba(197,208,230,.2);
-}
-
-/* 7. LOCATION SELECTOR
-===================================================== */
-
+.btn-secondary:hover { background: rgba(80,232,240,.15) !important; box-shadow: 0 0 20px rgba(80,232,240,.1); transform: translateY(-2px); }
+.mode-buttons { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 22px; }
+.mode-buttons button.active { box-shadow: 0 0 25px rgba(197,208,230,.2); }
 .moon-selector-grid {
     display: grid;
-
-    grid-template-columns:
-        minmax(220px,.8fr)
-        minmax(300px,1.5fr);
-
+    grid-template-columns: minmax(220px,.8fr) minmax(300px,1.5fr);
     gap: 25px;
-
     align-items: stretch;
 }
-
-.location-btn-list {
-    display: flex;
-
-    flex-direction: column;
-    gap: 10px;
-}
-
+.location-btn-list { display: flex; flex-direction: column; gap: 10px; }
 .location-btn-list button {
     width: 100%;
-
     padding: 15px;
-
     text-align: left;
-
     background: rgba(255,255,255,.025);
-
     border: 1px solid var(--border);
-
     color: var(--white);
-
     font-family: var(--font-body);
     font-size: 13px;
-
     cursor: pointer;
-
     transition: .3s;
 }
-
-.location-btn-list button:hover,
-.location-btn-list button.active {
+.location-btn-list button:hover, .location-btn-list button.active {
     background: rgba(197,208,230,.09);
-
     border-color: var(--moon);
-
     transform: translateX(4px);
 }
-
-/* 8. PREVIEW PANEL
-===================================================== */
-
 .preview-box {
     display: flex;
-
     flex-direction: column;
-
     overflow: hidden;
-
     background: rgba(5,7,15,.6);
-
     border: 1px solid rgba(255,255,255,.1);
-
     min-height: 350px;
 }
-
 .preview-image-slot {
     position: relative;
-
     height: 220px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(197,208,230,.17),
-            transparent 65%
-        ),
-        #101321;
-
+    background: radial-gradient(circle, rgba(197,208,230,.17), transparent 65%), #101321;
     overflow: hidden;
 }
-
-.preview-image-slot img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-}
-
+.preview-image-slot img { width: 100%; height: 100%; object-fit: cover; }
 .img-placeholder-text {
     position: absolute;
     inset: 0;
-
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
-
     gap: 12px;
-
     color: var(--moon);
-
     font-size: 11px;
     letter-spacing: 2px;
 }
-
-.img-placeholder-text small {
-    color: var(--muted);
-    font-size: 10px;
-}
-
-.preview-details {
-    padding: 22px;
-}
-
-.preview-details h3 {
-    margin: 15px 0;
-
-    font-family: var(--font-heading);
-
-    font-size: 19px;
-}
-
-.coords-text {
-    color: var(--cyan) !important;
-    font-size: 11px !important;
-}
-
-.desc-text {
-    margin-top: 12px;
-}
-
-/* 9. RECOMMENDATION SECTION
-===================================================== */
-
+.img-placeholder-text small { color: var(--muted); font-size: 10px; }
+.preview-details { padding: 22px; }
+.preview-details h3 { margin: 15px 0; font-family: var(--font-heading); font-size: 19px; }
+.coords-text { color: var(--cyan) !important; font-size: 11px !important; }
+.desc-text { margin-top: 12px; }
 .recommendation-layout {
     display: grid;
-
-    grid-template-columns:
-        minmax(220px,.75fr)
-        minmax(300px,1.6fr);
-
+    grid-template-columns: minmax(220px,.75fr) minmax(300px,1.6fr);
     gap: 25px;
 }
+.selected-moon-summary { padding: 25px; background: rgba(197,208,230,.055); border: 1px solid rgba(197,208,230,.25); }
+.selected-moon-summary h3 { font-size: 22px; color: var(--moon); margin: 15px 0; }
+.stats-list { padding-left: 18px; color: var(--muted); font-size: 12px; line-height: 2.2; }
+.earth-match-card { padding: 25px; background: rgba(255,255,255,.025); border: 1px solid var(--border); }
+.earth-header { padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+.earth-header h3 { font-size: 24px; color: var(--moon); margin: 15px 0 5px; }
+.country-text { font-size: 12px; color: var(--muted); }
+.badge-earth { border-color: rgba(80,232,240,.3); color: var(--cyan); background: rgba(80,232,240,.07); }
+.earth-data-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(130px,1fr)); gap: 12px; margin-bottom: 25px; }
+.earth-data-grid > * { padding: 15px; background: rgba(197,208,230,.045); border: 1px solid rgba(197,208,230,.12); transition: .3s; }
+.earth-data-grid > *:hover { border-color: var(--moon); transform: translateY(-3px); }
+.scientific-reason-box { padding: 22px; background: rgba(80,232,240,.035); border: 1px solid rgba(80,232,240,.18); }
+.scientific-reason-box h4 { color: var(--cyan); margin-bottom: 15px; }
+.scientific-reason-box ul { padding-left: 20px; color: var(--muted); font-size: 13px; line-height: 2; }
+.next-action-bar { display: flex; justify-content: flex-end; margin-top: 25px; }
+#step-auto-placeholder { border-color: rgba(197,208,230,.2); }
+#step-auto-placeholder em { color: var(--muted); }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #070810; }
+::-webkit-scrollbar-thumb { background: #34394a; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--moon); }
 
-.selected-moon-summary {
-    padding: 25px;
-
-    background: rgba(197,208,230,.055);
-
-    border: 1px solid rgba(197,208,230,.25);
-}
-
-.selected-moon-summary h3 {
-    font-size: 22px;
-
-    color: var(--moon);
-
-    margin: 15px 0;
-}
-
-.stats-list {
-    padding-left: 18px;
-
-    color: var(--muted);
-
-    font-size: 12px;
-    line-height: 2.2;
-}
-
-/* Earth Recommendation */
-
-.earth-match-card {
-    padding: 25px;
-
-    background: rgba(255,255,255,.025);
-
-    border: 1px solid var(--border);
-}
-
-.earth-header {
-    padding-bottom: 20px;
-
-    border-bottom: 1px solid var(--border);
-
-    margin-bottom: 20px;
-}
-
-.earth-header h3 {
-    font-size: 24px;
-
-    color: var(--moon);
-
-    margin: 15px 0 5px;
-}
-
-.country-text {
-    font-size: 12px;
-    color: var(--muted);
-}
-
-.badge-earth {
-    border-color: rgba(80,232,240,.3);
-
-    color: var(--cyan);
-
-    background: rgba(80,232,240,.07);
-}
-
-/* Earth Metrics */
-
-.earth-data-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(130px,1fr));
-
-    gap: 12px;
-
-    margin-bottom: 25px;
-}
-
-.earth-data-grid > * {
-    padding: 15px;
-
-    background: rgba(197,208,230,.045);
-
-    border: 1px solid rgba(197,208,230,.12);
-
-    transition: .3s;
-}
-
-.earth-data-grid > *:hover {
-    border-color: var(--moon);
-
-    transform: translateY(-3px);
-}
-
-/* Scientific Reason */
-
-.scientific-reason-box {
-    padding: 22px;
-
-    background: rgba(80,232,240,.035);
-
-    border: 1px solid rgba(80,232,240,.18);
-}
-
-.scientific-reason-box h4 {
-    color: var(--cyan);
-
-    margin-bottom: 15px;
-}
-
-.scientific-reason-box ul {
-    padding-left: 20px;
-
-    color: var(--muted);
-
-    font-size: 13px;
-    line-height: 2;
-}
-
-/* Next Action */
-
-.next-action-bar {
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 7, 15, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
     display: flex;
-
-    justify-content: flex-end;
-
-    margin-top: 25px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
-
-/* 10. AUTO PLACEHOLDER
-===================================================== */
-
-#step-auto-placeholder {
-    border-color: rgba(197,208,230,.2);
+.modal-overlay.hidden { display: none !important; }
+.modal-content {
+    background: #0f172a;
+    border: 1px solid rgba(197, 208, 230, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
 }
-
-#step-auto-placeholder em {
-    color: var(--muted);
-}
-
-/* 11. SCROLLBAR
-===================================================== */
-
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #070810;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #34394a;
-
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--moon);
-}
-
-/* 12. RESPONSIVE TABLET
-===================================================== */
 
 @media(max-width:1000px) {
-
-    .moon-container {
-        width: 95%;
-    }
-
-    .card-panel {
-        padding: 23px;
-    }
-
-    .moon-selector-grid,
-    .recommendation-layout {
-        grid-template-columns: 1fr;
-    }
-
+    .moon-container { width: 95%; }
+    .card-panel { padding: 23px; }
+    .moon-selector-grid, .recommendation-layout { grid-template-columns: 1fr; }
 }
-
-/* 13. RESPONSIVE MOBILE
-===================================================== */
-
 @media(max-width:700px) {
-
-    .moon-container {
-        width: 94%;
-    }
-
-    .moon-header {
-        padding: 65px 10px 35px;
-    }
-
-    .moon-header h1 {
-        font-size: 25px;
-        letter-spacing: 1px;
-    }
-
-    .moon-header .subtitle {
-        font-size: 12px;
-    }
-
-    .btn-back {
-        top: 10px;
-        left: 0;
-
-        font-size: 10px;
-        padding: 9px 12px;
-    }
-
-    .card-panel {
-        padding: 18px;
-        margin-bottom: 18px;
-    }
-
-    .card-panel h2 {
-        font-size: 17px;
-    }
-
-    .section-title-bar {
-        align-items: flex-start;
-
-        flex-direction: column;
-    }
-
-    .mode-buttons {
-        flex-direction: column;
-    }
-
-    .mode-buttons button {
-        width: 100%;
-    }
-
-    .preview-image-slot {
-        height: 180px;
-    }
-
-    .earth-match-card {
-        padding: 18px;
-    }
-
-    .earth-header h3 {
-        font-size: 20px;
-    }
-
-    .earth-data-grid {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-    }
-
-    .next-action-bar {
-        justify-content: stretch;
-    }
-
-    .next-action-bar button {
-        width: 100%;
-    }
-
+    .moon-container { width: 94%; }
+    .moon-header { padding: 65px 10px 35px; }
+    .moon-header h1 { font-size: 25px; letter-spacing: 1px; }
+    .moon-header .subtitle { font-size: 12px; }
+    .btn-back { top: 10px; left: 0; font-size: 10px; padding: 9px 12px; }
+    .card-panel { padding: 18px; margin-bottom: 18px; }
+    .card-panel h2 { font-size: 17px; }
+    .section-title-bar { align-items: flex-start; flex-direction: column; }
+    .mode-buttons { flex-direction: column; }
+    .mode-buttons button { width: 100%; }
+    .preview-image-slot { height: 180px; }
+    .earth-match-card { padding: 18px; }
+    .earth-header h3 { font-size: 20px; }
+    .earth-data-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .next-action-bar { justify-content: stretch; }
+    .next-action-bar button { width: 100%; }
 }
-
-/* 14. ACCESSIBILITY
-===================================================== */
-
-@media(prefers-reduced-motion:reduce) {
-
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-
-        animation-duration: .01ms !important;
-
-        transition-duration: .01ms !important;
-    }
-
-}
-
-</style>
+    </style>
     <style>
-        /* Penyesuaian aksen warna Bulan */
         .btn-primary { background: linear-gradient(135deg, #0284c7, #38bdf8); color: #0f172a; }
         .btn-primary:hover { box-shadow: 0 4px 15px rgba(56, 189, 248, 0.45); }
         .mars-loc-btn:hover, .mars-loc-btn.selected { background: rgba(56, 189, 248, 0.16); border-color: #38bdf8; }
@@ -794,15 +297,20 @@ body::after {
         .img-placeholder-text span { color: #38bdf8; }
         .location-btn-list { max-height: 460px; overflow-y: auto; padding-right: 6px; }
     </style>
-
 </head>
 <body>
-    <div class="mars-container">
+    <div class="moon-container">
         <!-- Header Navigasi -->
-        <header class="mars-header">
+        <header class="moon-header">
             <a href="index.html" class="btn-back">← Home Page</a>
             <h1>MOON ANALOG MISSION SYSTEM</h1>
             <p class="subtitle">LOLA Topographic Mapping & Earth Environmental Analogy Recommendations</p>
+            
+            <div style="margin-top: 1.25rem;">
+                <button class="btn-secondary" onclick="openDriveDataModal()" style="border-color: #38bdf8; color: #38bdf8;">
+                    📂 Preview Complete Mars, Moon & Earth Dataset (Google Drive)
+                </button>
+            </div>
         </header>
 
         <!-- Pilih Manual atau Otomatis -->
@@ -826,11 +334,9 @@ body::after {
                 <span class="badge-info">Hover to preview • Click for analogy analysis</span>
             </div>
 
-            <div class="mars-selector-grid">
+            <div class="moon-selector-grid">
                 <!-- Kolom Kiri: Daftar Tombol Zona Bulan -->
-                <div id="moon-location-buttons" class="location-btn-list">
-                    
-                </div>
+                <div id="moon-location-buttons" class="location-btn-list"></div>
 
                 <!-- Kolom Kanan: Foto + Penjelasan Singkat -->
                 <div id="moon-hover-preview" class="preview-box">
@@ -862,7 +368,7 @@ body::after {
 
             <div class="recommendation-layout">
                 <!-- Ringkasan Titik Bulan Terpilih -->
-                <div class="selected-mars-summary">
+                <div class="selected-moon-summary">
                     <h4>Selected Moon Location</h4>
                     <h3 id="rec-moon-name">-</h3>
                     <ul id="rec-moon-stats" class="stats-list"></ul>
@@ -897,7 +403,7 @@ body::after {
             </div>
         </section>
 
-                <!-- STEP 2B: Mode Otomatis (Input Multi-Parameter Target Bulan) -->
+        <!-- STEP 2B: Mode Otomatis (Input Multi-Parameter Target Bulan) -->
         <section id="step-auto-placeholder" class="card-panel hidden">
             <div class="section-title-bar">
                 <h2>Automatic Mode (Multi-Parameter input)</h2>
@@ -942,11 +448,6 @@ body::after {
             <div id="auto-match-results" class="hidden"></div>
         </section>
 
-    </div>
-
-    <script src="js/moon-logic.js"></script>
-</body>
-</html>
         <!-- STEP 3: Evaluasi Skor Kelayakan & Perbandingan Langsung (Bulan vs Bumi) -->
         <section id="step-evaluation-panel" class="card-panel hidden" style="margin-top: 1.5rem;">
             <div class="section-title-bar">
@@ -954,13 +455,11 @@ body::after {
                 <span id="eval-status-badge" class="score-badge">Status Misi: Menunggu Evaluasi</span>
             </div>
 
-            <!-- Kontainer Evaluasi Berdasarkan Ambang Batas 75% -->
             <div id="threshold-evaluation-box" class="evaluation-box" style="margin-bottom: 1.5rem; padding: 1.25rem; border-radius: 10px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(148, 163, 184, 0.2);">
                 <h3 id="eval-title-status" style="margin-top: 0; color: #38bdf8;">Analisis Ambang Batas (Threshold &ge; 75%)</h3>
                 <p id="eval-desc-status">Sistem sedang memproses kelayakan lokasi analogi Bulan berdasarkan parameter ilmiah...</p>
             </div>
 
-            <!-- Tabel Perbandingan Side-by-Side (Bulan vs Bumi) -->
             <h3>Direct Parameter Comparison (LOLA/Diviner Moon vs Earth Analogue)</h3>
             <div class="table-responsive" style="overflow-x: auto; margin-top: 0.75rem;">
                 <table class="comparison-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem;">
@@ -972,9 +471,76 @@ body::after {
                             <th style="padding: 10px; color: #bae6fd;">Validation Status</th>
                         </tr>
                     </thead>
-                    <tbody id="comparison-table-body">
-                        <!-- Di-render dinamis via moon-logic.js -->
-                    </tbody>
+                    <tbody id="comparison-table-body"></tbody>
                 </table>
             </div>
         </section>
+    </div>
+
+    <!-- GOOGLE DRIVE DATASET PREVIEW MODAL (Mars, Moon, & Earth Complete) -->
+    <div id="drive-data-modal" class="modal-overlay hidden">
+        <div class="modal-content card-panel" style="max-width: 950px; width: 92%; max-height: 85vh; overflow-y: auto;">
+            <div class="section-title-bar">
+                <h2>📁 Planetary Analog Dataset Preview (Google Drive)</h2>
+                <button class="btn-secondary" onclick="closeDriveDataModal()" style="padding: 0.3rem 0.7rem; font-size: 0.8rem;">✕ Close</button>
+            </div>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 1.25rem;">
+                Complete master dataset synchronized from Mars MOLA, 17 Moon Lunar Reconnaissance locations, and Earth Analog spreadsheets.
+            </p>
+
+            <!-- MARS DATASET SECTION -->
+            <h3 style="color: #f97316; margin-bottom: 0.5rem; font-size: 1.1rem;">1. Mars MOLA Topography & Target Zones</h3>
+            <div class="table-responsive" style="overflow-x: auto; margin-bottom: 1.5rem;">
+                <table class="comparison-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                    <thead>
+                        <tr style="background: rgba(15, 23, 42, 0.9); border-bottom: 2px solid #475569;">
+                            <th style="padding: 8px; color: #f97316;">Mars Zone / Region</th>
+                            <th style="padding: 8px;">MOLA Sample</th>
+                            <th style="padding: 8px;">Coordinates (Lat, Lon)</th>
+                            <th style="padding: 8px;">Elevation (m)</th>
+                            <th style="padding: 8px;">Slope (°)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-mars-table-body"></tbody>
+                </table>
+            </div>
+
+            <!-- MOON DATASET SECTION (17 Sites) -->
+            <h3 style="color: #38bdf8; margin-bottom: 0.5rem; font-size: 1.1rem;">2. Moon Topography & Highland/Crater Zones (17 Sites Complete)</h3>
+            <div class="table-responsive" style="overflow-x: auto; margin-bottom: 1.5rem;">
+                <table class="comparison-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                    <thead>
+                        <tr style="background: rgba(15, 23, 42, 0.9); border-bottom: 2px solid #475569;">
+                            <th style="padding: 8px; color: #38bdf8;">Moon Region / Crater</th>
+                            <th style="padding: 8px;">Mission Ref</th>
+                            <th style="padding: 8px;">Coordinates (Lat, Lon)</th>
+                            <th style="padding: 8px;">Elevation (m)</th>
+                            <th style="padding: 8px;">Slope (°)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-moon-table-body"></tbody>
+                </table>
+            </div>
+
+            <!-- EARTH DATASET SECTION -->
+            <h3 style="color: #10b981; margin-bottom: 0.5rem; font-size: 1.1rem;">3. Earth Analog Locations</h3>
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="comparison-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                    <thead>
+                        <tr style="background: rgba(15, 23, 42, 0.9); border-bottom: 2px solid #475569;">
+                            <th style="padding: 8px; color: #10b981;">Earth Analog Name</th>
+                            <th style="padding: 8px;">Terrain Type</th>
+                            <th style="padding: 8px;">Target Simulation</th>
+                            <th style="padding: 8px;">Coordinates (Lat, Lon)</th>
+                            <th style="padding: 8px;">Elevation (m)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-earth-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/moon-logic.js"></script>
+</body>
+</html>

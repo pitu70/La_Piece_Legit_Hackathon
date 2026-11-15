@@ -177,7 +177,15 @@ const earthMoonDatabase = [
     }
 ];
 
-    const moonLocationsData = [
+const marsDatasetSummary = [
+    { name: "Acidalia Planitia Basin Zone", sample: "MOLA Sample", lat: 55.23, lon: 22.26, elevation: -4125, slope: 0.19 },
+    { name: "Hellas Planitia Deep Floor", sample: "MOLA Sample", lat: 42.73, lon: 176.17, elevation: -4046, slope: 0.28 },
+    { name: "Arcadia Planitia Northern Plains", sample: "MOLA Sample", lat: 52.10, lon: 167.57, elevation: -3838, slope: 3.4 },
+    { name: "Utopia Planitia Sedimentary Tract", sample: "MOLA Sample", lat: 56.01, lon: 25.39, elevation: -3876, slope: 0.31 },
+    { name: "Elysium Planitia Volcanic Rise", sample: "MOLA Sample", lat: 38.82, lon: 113.67, elevation: -4508, slope: 0.31 }
+];
+
+const moonLocationsData = [
     {
         id: "bandfield",
         name: "Bandfield Crater (Mare Marginis)",
@@ -200,8 +208,8 @@ const earthMoonDatabase = [
             "Directly classified as Basaltic Volcanic (Mare) with a high iron oxide ratio (1.820), aligning with Bandfield's 24.72% FeO content.",
             "Minimal vegetation (NDVI 0.037) and low clay minerals (1.022), reflecting fresh basaltic volcanic surfaces on the Moon.",
             "High surface roughness (12.197 m) is ideal for testing rover suspension durability on rocky basaltic terrain."
-            ]
-  },
+        ]
+    },
     {
         id: "nijland-v",
         name: "Nijland V Crater",
@@ -299,7 +307,7 @@ const earthMoonDatabase = [
         ]
     },
     {
-        id: "oimages/Screenshot 2026-11-15 215523.pngn",
+        id: "mare-orientale",
         name: "Mare Orientale Basin",
         zoneTag: "BASALT (MARIA) • MULTI-RING BASIN",
         lat: -19.0,
@@ -442,7 +450,7 @@ const earthMoonDatabase = [
             "Represents basaltic flood lava layers inside an ancient impact basin."
         ]
     },
-       {
+    {
         id: "gruithuisen-domes",
         name: "Gruithuisen Domes",
         zoneTag: "SILICIC / RHYOLITIC DOMES • LOW FeO",
@@ -514,7 +522,7 @@ const earthMoonDatabase = [
             "Serves as the research hub for the NASA Haughton-Mars Project to test spacesuits and long-duration polar rovers."
         ]
     },
-        {
+    {
         id: "al-khwarizmi",
         name: "Al-Khwarizmi Crater",
         zoneTag: "ANORTHOSITE • FAR SIDE HIGHLANDS",
@@ -592,7 +600,9 @@ let selectedMoonLocation = null;
 
 document.addEventListener("DOMContentLoaded", function () {
     renderMoonLocationButtons();
+    populateDriveModalTable();
 }); 
+
 function selectMode(mode) {
     const btnManual = document.getElementById("btn-mode-manual");
     const btnAuto = document.getElementById("btn-mode-auto");
@@ -632,7 +642,8 @@ function renderMoonLocationButtons() {
                 '<span class="loc-sub">Lat: ' + loc.lat + '° | Lon: ' + loc.lon + '° | FeO: ' + loc.feoPercent + '%</span>' +
             '</div>' +
             '<span class="elev-pill">' + elevSign + loc.elevation + ' m</span>';
-            btn.addEventListener("mouseenter", function () {
+            
+        btn.addEventListener("mouseenter", function () {
             updateHoverPreview(loc);
         }); 
         btn.addEventListener("click", function () {
@@ -646,7 +657,9 @@ function renderMoonLocationButtons() {
 
         container.appendChild(btn);
     });
-} function updateHoverPreview(loc) {
+} 
+
+function updateHoverPreview(loc) {
     document.getElementById("preview-zone-tag").textContent = loc.zoneTag;
     document.getElementById("preview-title").textContent = loc.name;
     document.getElementById("preview-coords").textContent =
@@ -666,9 +679,13 @@ function renderMoonLocationButtons() {
         placeholderEl.style.display = "flex";
         hintEl.textContent = loc.imageHint;
     }
-} function kelvinToCelsius(k) {
+} 
+
+function kelvinToCelsius(k) {
     return (k - 273.15).toFixed(1);
-} function selectMoonLocation(loc) {
+} 
+
+function selectMoonLocation(loc) {
     selectedMoonLocation = loc;
     const recSection = document.getElementById("step-earth-recommendation");
     recSection.classList.remove("hidden");
@@ -692,7 +709,7 @@ function renderMoonLocationButtons() {
     document.getElementById("rec-earth-country").textContent = analog.type + " (" + analog.lat + "°, " + analog.lon + "°)";
 
     const scoreBadge = document.getElementById("match-score-badge");
-    scoreBadge.textContent = "Match Score:" + loc.similarityScore + "%";
+    scoreBadge.textContent = "Match Score: " + loc.similarityScore + "%";
     scoreBadge.style.background = loc.similarityScore >= 75 ? "#10b981" : "#f59e0b";
 
     document.getElementById("rec-earth-metrics").innerHTML =
@@ -703,12 +720,12 @@ function renderMoonLocationButtons() {
         '<div class="metric-box"><small>Clay Mineral:  </small><strong>' + analog.clayMineral + '</strong></div>' +
         '<div class="metric-box"><small>NDVI / Temperature:  </small><strong>' + analog.ndvi + ' / ' + analog.tempDayC + '°C</strong></div>';
 
-    // 3. Alasan Ilmiah
     const reasonsList = document.getElementById("rec-reasons-list");
     reasonsList.innerHTML = loc.reasons.map(function (reason) {
         return '<li>' + reason + '</li>';
     }).join("");
-recSection.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    
+    recSection.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
 function runAutoMoonMatch() {
@@ -717,9 +734,7 @@ function runAutoMoonMatch() {
     const inputFeo = parseFloat(document.getElementById("auto-feo").value) || 10;
     const inputTempK = parseFloat(document.getElementById("auto-temp-k").value) || 350;
 
-    // Konversi FeO% Bulan (0-25%) ke skala Iron Oxide Ratio Bumi (0.7 - 3.2)
     const targetIronRatio = 0.75 + (inputFeo / 25) * 2.45;
-    // Konversi Suhu Siang Bulan (160K - 400K) ke skala Suhu Siang Bumi (-25°C s/d 33°C)
     const targetEarthTempC = -25 + ((inputTempK - 160) / 240) * 58;
 
     const scoredResults = earthMoonDatabase.map(function (earth) {
@@ -812,9 +827,73 @@ function renderAutoResults(results, params) {
     resultContainer.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
-let latestAutoEvaluation = null;
+// Google Drive Dataset Viewer Modal Functions
+function openDriveDataModal() {
+    const modal = document.getElementById("drive-data-modal");
+    if (modal) modal.classList.remove("hidden");
+}
 
-// Attach event listener for the "Proceed to Score Evaluation & Comparison ->" button (Manual Mode)
+function closeDriveDataModal() {
+    const modal = document.getElementById("drive-data-modal");
+    if (modal) modal.classList.add("hidden");
+}
+
+function populateDriveModalTable() {
+    // 1. Render Mars Table
+    const marsTbody = document.getElementById("modal-mars-table-body");
+    if (marsTbody) {
+        marsTbody.innerHTML = "";
+        marsDatasetSummary.forEach(loc => {
+            const tr = document.createElement("tr");
+            tr.style.borderBottom = "1px solid rgba(148, 163, 184, 0.15)";
+            tr.innerHTML = `
+                <td style="padding: 8px; font-weight: 600; color: #f8fafc;">${loc.name}</td>
+                <td style="padding: 8px; color: #38bdf8;">${loc.sample}</td>
+                <td style="padding: 8px; font-family: monospace;">${loc.lat}°, ${loc.lon}°</td>
+                <td style="padding: 8px;">${loc.elevation > 0 ? "+" : ""}${loc.elevation} m</td>
+                <td style="padding: 8px;">${loc.slope}°</td>
+            `;
+            marsTbody.appendChild(tr);
+        });
+    }
+
+    // 2. Render Moon Table (17 Sites Complete)
+    const moonTbody = document.getElementById("modal-moon-table-body");
+    if (moonTbody) {
+        moonTbody.innerHTML = "";
+        moonLocationsData.forEach(loc => {
+            const tr = document.createElement("tr");
+            tr.style.borderBottom = "1px solid rgba(148, 163, 184, 0.15)";
+            tr.innerHTML = `
+                <td style="padding: 8px; font-weight: 600; color: #f8fafc;">${loc.name}</td>
+                <td style="padding: 8px; color: #38bdf8;">Lunar Reconnaissance</td>
+                <td style="padding: 8px; font-family: monospace;">${loc.lat}°, ${loc.lon}°</td>
+                <td style="padding: 8px;">${loc.elevation > 0 ? "+" : ""}${loc.elevation} m</td>
+                <td style="padding: 8px;">${loc.slope.toFixed(2)}°</td>
+            `;
+            moonTbody.appendChild(tr);
+        });
+    }
+
+    // 3. Render Earth Table (16 Complete Sites)
+    const earthTbody = document.getElementById("modal-earth-table-body");
+    if (earthTbody) {
+        earthTbody.innerHTML = "";
+        earthMoonDatabase.forEach(item => {
+            const tr = document.createElement("tr");
+            tr.style.borderBottom = "1px solid rgba(148, 163, 184, 0.15)";
+            tr.innerHTML = `
+                <td style="padding: 8px; font-weight: 600; color: #f8fafc;">${item.name}</td>
+                <td style="padding: 8px; color: #94a3b8;">${item.type}</td>
+                <td style="padding: 8px; color: #38bdf8;">${item.target}</td>
+                <td style="padding: 8px; font-family: monospace;">${item.lat}°, ${item.lon}°</td>
+                <td style="padding: 8px;">${item.elevation} m</td>
+            `;
+            earthTbody.appendChild(tr);
+        });
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const btnProceed = document.getElementById("btn-proceed-flowchart");
     if (btnProceed) {
@@ -841,13 +920,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Helper function when the user clicks the Evaluate button from Automatic Mode
-function evaluateFromAutoMode() {
-    if (!latestAutoEvaluation) return;
-    openStep3Evaluation(latestAutoEvaluation);
-}
-
-// Render Step 3 content: Threshold >= 75% Analysis & Side-by-Side Comparison Table
 function openStep3Evaluation(evalData) {
     const evalPanel = document.getElementById("step-evaluation-panel");
     if (!evalPanel) return;
@@ -860,7 +932,6 @@ function openStep3Evaluation(evalData) {
     const evalTitle = document.getElementById("eval-title-status");
     const evalDesc = document.getElementById("eval-desc-status");
 
-    // 1. Update Feasibility Status Based on Threshold >= 75%
     if (isPass) {
         statusBadge.textContent = "Mission Status: ANALOG QUALIFIED (" + evalData.score + "%)";
         statusBadge.style.background = "#10b981";
@@ -875,7 +946,6 @@ function openStep3Evaluation(evalData) {
             "The Earth analog site <strong>" + evalData.earth.name + "</strong> is <strong>QUALIFIED</strong> for field simulation of the lunar target <strong>" + evalData.moonName + "</strong>. " +
             "Geological parameters, low vegetation index (NDVI " + evalData.earth.ndvi + "), and iron oxide ratio meet analog mission validation standards.";
     } else {
-        // Find the best backup alternative from the Earth dataset if score is below 75%
         const bestBackup = earthMoonDatabase.reduce(function (prev, curr) {
             return (curr.ndvi < prev.ndvi) ? curr : prev;
         }, earthMoonDatabase[0]);
@@ -894,7 +964,6 @@ function openStep3Evaluation(evalData) {
             "The system recommends additional instrument calibration or considering extreme alternatives such as <strong>" + bestBackup.name + "</strong>.";
     }
 
-    // 2. Build Side-by-Side Comparison Table Rows (Moon vs Earth)
     const rows = [
         {
             param: "Site Identity & Type",

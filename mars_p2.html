@@ -9,14 +9,13 @@
 </head>
 <body>
     <div class="mars-container">
-        <!-- Header Navigasi -->
         <header class="mars-header">
             <a href="index.html" class="btn-back">← Welcome Page</a>
             <h1>MARS ANALOG MISSION SYSTEM</h1>
             <p class="subtitle">Pemetaan Topografi MOLA & Rekomendasi Analogi Lingkungan Bumi</p>
         </header>
 
-        <!-- STEP 1: Pilih Manual atau Otomatis (Sesuai Flowchart) -->
+        <!-- STEP 1: Pilih Manual atau Otomatis -->
         <section id="step-mode-selector" class="card-panel">
             <h2>Pilih Mode Analisis</h2>
             <p>Tentukan metode pencarian lokasi analogi planet Mars:</p>
@@ -38,12 +37,9 @@
             </div>
 
             <div class="mars-selector-grid">
-                <!-- Kolom Kiri: Daftar Tombol Zona Mars -->
-                <div id="mars-location-buttons" class="location-btn-list">
-                    <!-- Tombol di-generate otomatis oleh mars-logic.js -->
-                </div>
+                <div id="mars-location-buttons" class="location-btn-list"></div>
 
-                <!-- Kolom Kanan: Panel Hover Preview (Foto + Penjelasan Singkat) -->
+                <!-- Panel Hover Preview Mars -->
                 <div id="mars-hover-preview" class="preview-box">
                     <div class="preview-image-slot">
                         <img id="preview-img" src="" alt="Pratinjau Wilayah Mars" style="display: none;">
@@ -64,7 +60,7 @@
             </div>
         </section>
 
-        <!-- STEP 3A: Output Rekomendasi Analogi (Bumi) + Alasan Ilmiah -->
+        <!-- STEP 3A: Output Rekomendasi Analogi (Bumi) + Foto Bumi + Alasan Ilmiah -->
         <section id="step-earth-recommendation" class="card-panel hidden">
             <div class="section-title-bar">
                 <h2>2. Rekomendasi Analogi (Bumi)</h2>
@@ -72,33 +68,37 @@
             </div>
 
             <div class="recommendation-layout">
-                <!-- Ringkasan Titik Mars Terpilih -->
+                <!-- Kolom Kiri: Ringkasan Titik Mars Terpilih -->
                 <div class="selected-mars-summary">
                     <h4>Target Lokasi Mars Terpilih</h4>
                     <h3 id="rec-mars-name">-</h3>
                     <ul id="rec-mars-stats" class="stats-list"></ul>
                 </div>
 
-                <!-- Hasil Rekomendasi Bumi & Alasan -->
+                <!-- Kolom Kanan: Hasil Rekomendasi Bumi + Slot Foto Bumi & Alasan -->
                 <div class="earth-match-card">
+                    <!-- Slot Foto Lokasi Bumi (Dari folder Earth/Photos) -->
+                    <div class="earth-image-slot">
+                        <img id="rec-earth-img" src="" alt="Foto Analogi Bumi" style="display: none;">
+                        <div id="rec-earth-img-placeholder" class="img-placeholder-text">
+                            <span>[ Slot Foto Analogi Bumi ]</span>
+                            <small id="rec-earth-img-hint">File foto: -</small>
+                        </div>
+                    </div>
+
                     <div class="earth-header">
-                        <span class="badge-earth">REKOMENDASI ANALOGI BUMI</span>
+                        <span class="badge-earth" id="rec-earth-type">REKOMENDASI ANALOGI BUMI</span>
                         <h3 id="rec-earth-name">-</h3>
                         <p id="rec-earth-country" class="country-text">-</p>
                     </div>
 
-                    <div class="earth-data-grid" id="rec-earth-metrics">
-                        <!-- Parameter Bumi dari dataset NASA di-render di sini -->
-                    </div>
+                    <div class="earth-data-grid" id="rec-earth-metrics"></div>
 
                     <div class="scientific-reason-box">
                         <h4>🔬 Alasan Ilmiah Direkomendasikan:</h4>
-                        <ul id="rec-reasons-list">
-                            <!-- Poin alasan kecocokan ilmiah di-render di sini -->
-                        </ul>
+                        <ul id="rec-reasons-list"></ul>
                     </div>
 
-                    <!-- Tombol Lanjut ke Tahap Flowchart Berikutnya -->
                     <div class="next-action-bar">
                         <button id="btn-proceed-flowchart" class="btn-primary">
                             Lanjut Evaluasi Skor & Perbandingan →
@@ -108,7 +108,7 @@
             </div>
         </section>
 
-        <!-- Placeholder Tahap 2 (Mode Otomatis - Akan kita kerjakan setelah Tahap 1 oke) -->
+        <!-- Placeholder Tahap 2 -->
         <section id="step-auto-placeholder" class="card-panel hidden">
             <h2>Mode Otomatis (Input Multi-Parameter Analogi)</h2>
             <p><em>Bagian ini akan kita bangun di Tahap 2 setelah jalur Manual selesai direvisi.</em></p>
@@ -118,3 +118,34 @@
     <script src="js/mars-logic.js"></script>
 </body>
 </html>
+<!-- STEP 3B: Tahap Evaluasi Skor & Perbandingan Side-by-Side -->
+        <section id="step-evaluation-panel" class="card-panel hidden" style="margin-top: 1.5rem;">
+            <div class="section-title-bar">
+                <h2>3. Evaluasi Skor Kelayakan & Perbandingan Langsung</h2>
+                <span id="eval-status-badge" class="score-badge">Status Misi: Menunggu Evaluasi</span>
+            </div>
+
+            <!-- Kontainer Evaluasi Berdasarkan Ambang Batas 75% -->
+            <div id="threshold-evaluation-box" class="evaluation-box" style="margin-bottom: 1.5rem; padding: 1.25rem; border-radius: 10px; background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(148, 163, 184, 0.2);">
+                <h3 id="eval-title-status" style="margin-top: 0; color: #38bdf8;">Analisis Ambang Batas (Threshold $\ge 75\%$)</h3>
+                <p id="eval-desc-status">Sistem sedang memproses kelayakan lokasi berdasarkan parameter ilmiah...</p>
+            </div>
+
+            <!-- Tabel Perbandingan Side-by-Side (Mars vs Bumi) -->
+            <h3>Perbandingan Parameter Langsung (Mars MOLA vs Analogi Bumi)</h3>
+            <div class="table-responsive" style="overflow-x: auto; margin-top: 0.75rem;">
+                <table class="comparison-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem;">
+                    <thead>
+                        <tr style="background: rgba(15, 23, 42, 0.9); border-bottom: 2px solid #475569;">
+                            <th style="padding: 10px; color: #94a3b8;">Parameter Sains</th>
+                            <th style="padding: 10px; color: #f97316;">Target Mars (MOLA)</th>
+                            <th style="padding: 10px; color: #10b981;">Analogi Bumi Terpilih</th>
+                            <th style="padding: 10px; color: #38bdf8;">Status Validasi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="comparison-table-body">
+                        <!-- Di-render dinamis via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>

@@ -6,6 +6,928 @@
     <title>Planetary Analog Mission System - La Piece Legit</title>
     <link rel="stylesheet" href="css/templatemo-nexaverse.css">
     <link rel="stylesheet" href="css/custom-hackathon.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+/* =====================================================
+   A-POLA-GIS | MARS ANALOG DASHBOARD
+   DESIGN SYSTEM: LA PEACE LEGIT
+   UI ENHANCEMENT ONLY
+===================================================== */
+
+/* 1. GLOBAL DESIGN SYSTEM
+===================================================== */
+
+:root {
+    --space: #070810;
+    --space-light: #101321;
+    --mars: #ff7958;
+    --mars-dark: #d94c42;
+    --cyan: #50e8f0;
+    --moon: #c5d0e6;
+    --white: #f5f5f8;
+    --muted: #aeb1bd;
+
+    --glass: rgba(12, 15, 27, 0.82);
+    --border: rgba(255,255,255,0.12);
+
+    --font-heading: 'Syne', sans-serif;
+    --font-body: 'Outfit', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--space) !important;
+    color: var(--white) !important;
+    font-family: var(--font-body) !important;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 2. BACKGROUND
+===================================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(255,121,88,0.09),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(80,232,240,0.05),
+            transparent 35%
+        ),
+        #070810;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 65px 65px;
+}
+
+/* 3. MAIN CONTAINER
+===================================================== */
+
+.mars-container {
+    width: 92%;
+    max-width: 1500px;
+    margin: auto;
+    padding-bottom: 60px;
+}
+
+/* 4. HEADER
+===================================================== */
+
+.mars-header {
+    position: relative;
+    padding: 45px 20px 55px;
+    margin-bottom: 35px;
+
+    text-align: center;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.mars-header h1 {
+    font-family: var(--font-heading) !important;
+    font-size: clamp(25px, 4vw, 48px);
+    font-weight: 800;
+    letter-spacing: 3px;
+
+    color: var(--white);
+    margin: 25px 0 15px;
+
+    text-shadow:
+        0 0 35px rgba(255,121,88,0.15);
+}
+
+.mars-header .subtitle {
+    max-width: 850px;
+    margin: auto;
+
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+}
+
+/* Back Button */
+
+.btn-back {
+    display: inline-block;
+
+    position: absolute;
+    top: 15px;
+    left: 0;
+
+    padding: 11px 20px;
+
+    border: 1px solid rgba(255,121,88,0.4);
+    background: rgba(255,121,88,0.07);
+
+    color: var(--mars) !important;
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    transition: .3s;
+}
+
+.btn-back:hover {
+    background: rgba(255,121,88,0.18);
+    border-color: var(--mars);
+    transform: translateX(-4px);
+}
+
+/* 5. DASHBOARD PANELS
+===================================================== */
+
+.card-panel {
+    position: relative;
+
+    padding: 30px;
+    margin-bottom: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,24,40,0.85),
+            rgba(8,11,21,0.92)
+        ) !important;
+
+    border: 1px solid var(--border) !important;
+    border-radius: 3px !important;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.025);
+
+    backdrop-filter: blur(15px);
+
+    transition: border-color .3s;
+}
+
+.card-panel:hover {
+    border-color: rgba(255,121,88,0.3) !important;
+}
+
+.card-panel h2 {
+    font-family: var(--font-heading) !important;
+    color: var(--white) !important;
+
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+
+    margin-bottom: 15px;
+}
+
+.card-panel h3 {
+    font-family: var(--font-heading) !important;
+    color: var(--white);
+}
+
+.card-panel h4 {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.card-panel p {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+/* Section Title */
+
+.section-title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+    flex-wrap: wrap;
+
+    padding-bottom: 18px;
+    margin-bottom: 22px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.section-title-bar h2 {
+    margin: 0;
+}
+
+/* 6. BADGES
+===================================================== */
+
+.badge-info,
+.score-badge,
+.zone-tag {
+    display: inline-block;
+
+    padding: 7px 13px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    border: 1px solid rgba(80,232,240,0.3);
+    background: rgba(80,232,240,0.07);
+
+    color: var(--cyan);
+}
+
+/* 7. BUTTON SYSTEM
+===================================================== */
+
+.btn-primary,
+.btn-secondary {
+    padding: 13px 22px;
+
+    font-family: var(--font-body) !important;
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    border: 1px solid transparent;
+    border-radius: 2px;
+
+    cursor: pointer;
+
+    transition:
+        background .3s,
+        border-color .3s,
+        box-shadow .3s,
+        transform .3s;
+}
+
+.btn-primary {
+    background: linear-gradient(
+        100deg,
+        #f36c4b,
+        #d94c83
+    ) !important;
+
+    color: white !important;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 25px rgba(255,100,80,0.25);
+}
+
+.btn-secondary {
+    background: rgba(80,232,240,0.06) !important;
+
+    color: var(--cyan) !important;
+
+    border-color: rgba(80,232,240,0.35) !important;
+}
+
+.btn-secondary:hover {
+    background: rgba(80,232,240,0.15) !important;
+
+    box-shadow:
+        0 0 20px rgba(80,232,240,0.1);
+
+    transform: translateY(-2px);
+}
+
+/* Mode Selector */
+
+.mode-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    margin-top: 22px;
+}
+
+.mode-buttons button.active {
+    box-shadow:
+        0 0 25px rgba(255,121,88,0.2);
+}
+
+/* 8. LOCATION SELECTOR
+===================================================== */
+
+.mars-selector-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, 0.8fr)
+        minmax(300px, 1.5fr);
+
+    gap: 25px;
+    align-items: stretch;
+}
+
+.location-btn-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.location-btn-list button {
+    width: 100%;
+
+    padding: 15px;
+
+    text-align: left;
+
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--border);
+
+    color: var(--white);
+
+    font-family: var(--font-body);
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.location-btn-list button:hover,
+.location-btn-list button.active {
+    background: rgba(255,121,88,0.09);
+
+    border-color: var(--mars);
+
+    transform: translateX(4px);
+}
+
+/* 9. PREVIEW PANEL
+===================================================== */
+
+.preview-box {
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: rgba(5,7,15,0.6);
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    min-height: 350px;
+}
+
+.preview-image-slot {
+    position: relative;
+
+    height: 220px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,121,88,0.13),
+            transparent 65%
+        ),
+        #101321;
+
+    overflow: hidden;
+}
+
+.preview-image-slot img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.img-placeholder-text {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--mars);
+
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.img-placeholder-text small {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.preview-details {
+    padding: 22px;
+}
+
+.preview-details h3 {
+    margin: 15px 0;
+
+    font-family: var(--font-heading);
+    font-size: 19px;
+}
+
+.coords-text {
+    color: var(--cyan) !important;
+    font-size: 11px !important;
+}
+
+.desc-text {
+    margin-top: 12px;
+}
+
+/* 10. AUTOMATIC FILTER FORM
+===================================================== */
+
+.auto-form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.form-group {
+    padding: 20px;
+
+    background: rgba(255,255,255,0.025);
+
+    border: 1px solid var(--border);
+}
+
+.form-group label {
+    display: block;
+
+    color: var(--white);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 18px;
+}
+
+.form-group label span {
+    color: var(--mars);
+    font-weight: 800;
+}
+
+.form-group small {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    margin-top: 12px;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--mars);
+    cursor: pointer;
+}
+
+.form-group select {
+    width: 100%;
+
+    padding: 13px;
+
+    background: #111525;
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    color: var(--white);
+
+    font-family: var(--font-body);
+    font-size: 12px;
+
+    outline: none;
+}
+
+.form-group select:focus {
+    border-color: var(--cyan);
+}
+
+.form-action-bar {
+    margin-top: 22px;
+}
+
+/* 11. RECOMMENDATION SECTION
+===================================================== */
+
+.recommendation-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, 0.75fr)
+        minmax(300px, 1.6fr);
+
+    gap: 25px;
+}
+
+.selected-mars-summary {
+    padding: 25px;
+
+    background: rgba(255,121,88,0.055);
+
+    border: 1px solid rgba(255,121,88,0.25);
+}
+
+.selected-mars-summary h3 {
+    font-size: 22px;
+    color: var(--mars);
+    margin: 15px 0;
+}
+
+.stats-list {
+    padding-left: 18px;
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 2.2;
+}
+
+.multi-recommendation-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 15px;
+}
+
+.multi-recommendation-grid > * {
+    transition: .3s;
+}
+
+.multi-recommendation-grid > *:hover {
+    transform: translateY(-4px);
+}
+
+/* 12. EVALUATION PANEL
+===================================================== */
+
+.evaluation-box {
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,121,88,0.07),
+            rgba(80,232,240,0.035)
+        ) !important;
+
+    border: 1px solid rgba(255,121,88,0.3) !important;
+
+    border-radius: 3px !important;
+}
+
+.evaluation-box h3 {
+    color: var(--mars) !important;
+}
+
+/* 13. SCIENTIFIC TABLE
+===================================================== */
+
+.table-responsive {
+    border: 1px solid var(--border);
+
+    background: rgba(5,7,15,0.4);
+}
+
+.comparison-table {
+    min-width: 650px;
+
+    border-collapse: collapse;
+
+    color: var(--muted);
+
+    font-family: var(--font-body);
+}
+
+.comparison-table thead tr {
+    background: rgba(255,255,255,0.045) !important;
+}
+
+.comparison-table th {
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+.comparison-table td {
+    font-size: 12px;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 13px !important;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.comparison-table tbody tr {
+    transition: background .2s;
+}
+
+.comparison-table tbody tr:hover {
+    background: rgba(80,232,240,0.035);
+}
+
+/* 14. MODAL
+===================================================== */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,0.85);
+
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    width: 100%;
+
+    background: #0c1020 !important;
+
+    border: 1px solid rgba(80,232,240,0.25) !important;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.6);
+
+    animation: modalAppear .3s ease;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 15. HIDDEN ELEMENTS
+===================================================== */
+
+.hidden {
+    display: none !important;
+}
+
+/* 16. SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #070810;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #34394a;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--mars);
+}
+
+/* 17. RESPONSIVE TABLET
+===================================================== */
+
+@media(max-width: 1000px) {
+
+    .mars-container {
+        width: 95%;
+    }
+
+    .card-panel {
+        padding: 23px;
+    }
+
+    .mars-selector-grid,
+    .recommendation-layout {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* 18. RESPONSIVE MOBILE
+===================================================== */
+
+@media(max-width: 700px) {
+
+    .mars-container {
+        width: 94%;
+    }
+
+    .mars-header {
+        padding: 65px 10px 35px;
+    }
+
+    .mars-header h1 {
+        font-size: 25px;
+        letter-spacing: 1px;
+    }
+
+    .mars-header .subtitle {
+        font-size: 12px;
+    }
+
+    .btn-back {
+        top: 10px;
+        left: 0;
+
+        font-size: 10px;
+        padding: 9px 12px;
+    }
+
+    .card-panel {
+        padding: 18px;
+        margin-bottom: 18px;
+    }
+
+    .card-panel h2 {
+        font-size: 17px;
+    }
+
+    .section-title-bar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .mode-buttons {
+        flex-direction: column;
+    }
+
+    .mode-buttons button {
+        width: 100%;
+    }
+
+    .auto-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-image-slot {
+        height: 180px;
+    }
+
+    .multi-recommendation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .next-action-bar {
+        text-align: left !important;
+    }
+
+    .next-action-bar button {
+        width: 100%;
+    }
+
+    .modal-overlay {
+        padding: 10px;
+    }
+
+    .modal-content {
+        max-height: 90vh !important;
+    }
+
+}
+
+/* 19. ACCESSIBILITY
+===================================================== */
+
+@media(prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+
+}
+/* GALAXY BACKGROUND — MATCH WITH HOME */
+
+body {
+    background: #070810 !important;
+}
+
+body::before {
+    display: none;
+}
+
+body::after {
+    display: none;
+}
+
+body {
+    position: relative;
+}
+
+body .mars-container {
+    position: relative;
+    z-index: 1;
+}
+
+body::before {
+    content: "";
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+
+    background:
+        linear-gradient(
+            rgba(5,7,15,.55),
+            rgba(5,7,15,.78)
+        ),
+        url("images/galaxy-bg.jpg")
+        center / cover no-repeat,
+        #070810;
+}
+
+body::after {
+    content: "";
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 65px 65px;
+}
+</style>
 </head>
 <body>
     <div class="mars-container">

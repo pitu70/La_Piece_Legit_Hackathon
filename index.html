@@ -312,50 +312,48 @@
         transform: translate(-50%, -40%) scale(.92);
     }
 
-    .planet-image {
-        width: 82%;
-        height: 82%;
+    /* PLANET IMAGE */
+.planet-image {
+    width: 82%;
+    max-width: 420px;
+    aspect-ratio: 1 / 1;
+    height: auto;
 
-        border-radius: 50%;
+    border-radius: 50%;
+    flex-shrink: 0;
 
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-        box-shadow:
-            inset -45px -25px 65px rgba(0,0,0,.85),
-            inset 10px 10px 30px rgba(255,255,255,.12),
-            0 0 75px rgba(255,120,80,.16);
-    }
+}
 
-    .planet-image.mars {
-        background-image: url("images/mars.jpg");
-    }
+/* MARS */
+.planet-image.mars {
+    background-image: url("images/mars.jpg");
+}
 
-    .planet-image.moon {
-        background-image: url("images/moon.jpg");
+/* MOON */
+.planet-image.moon {
+    background-image: url("images/moon.jpg");
+}
 
-        box-shadow:
-            inset -45px -25px 65px rgba(0,0,0,.85),
-            inset 10px 10px 30px rgba(255,255,255,.12),
-            0 0 75px rgba(170,190,230,.18);
-    }
+/* PLANET SHADOW */
+.planet-shadow {
+    position: absolute;
 
-    .planet-shadow {
-        position: absolute;
+    width: 65%;
+    height: 10%;
 
-        width: 90%;
-        height: 15%;
+    bottom: 5%;
 
-        bottom: 0;
+    background: rgba(0,0,0,.45);
+    filter: blur(25px);
+    border-radius: 50%;
 
-        background: rgba(0,0,0,.5);
-        filter: blur(35px);
-        border-radius: 50%;
-
-        z-index: -1;
-    }
-
+    z-index: 1;
+    pointer-events: none;
+}
 
     /* =================================
        8. PLANET INFORMATION
@@ -846,7 +844,7 @@
 
             <div class="info-panel info-left">
 
-                <h3>PLANET PROFILE</h3>
+                <h3>PROFILE</h3>
 
                 <small id="label-one">MOONS</small>
 

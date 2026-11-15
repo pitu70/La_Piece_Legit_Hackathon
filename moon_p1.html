@@ -2,30 +2,117 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Analisis Bumi - Bulan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moon Analog Explorer - La Piece Legit</title>
     <link rel="stylesheet" href="css/templatemo-nexaverse.css">
     <link rel="stylesheet" href="css/custom-hackathon.css">
 </head>
 <body>
-    <div class="container" style="padding-top: 40px;">
-        <div class="header"
-        id="mainheader">
-            <p class="section-title">ANALISIS ANALOGI: BUMI ↔ BULAN</p
-        ></div>
-        <a href="index.html" class="back-btn" style="display:inline-block; margin-bottom:20px;">← Kembali</a>
-        <!-- Programmer 1 mulai ngoding form & tabel perbandingan Bumi-Bulan di sini -->
-    </div>
+    <div class="moon-container">
+        <!-- Header Navigasi -->
+        <header class="moon-header">
+            <a href="index.html" class="btn-back">← Back to Menu</a>
+            <h1>MOON ANALOG MISSION SYSTEM</h1>
+            <p class="subtitle">Pemetaan Topografi LOLA & Rekomendasi Analogi Lingkungan Bumi</p>
+        </header>
 
-    <div calss="form group">
-        <label for="destinationSelect"> Pilih Lokasi Moon:</label>
-        <select id="destinationSelect" onchange="updateLocationOptions()">
-            <option value="">Pilih Lokasi</option>
-            <option value="moon">Cold Spot 1</option>
-            <option value="moon">Cold Spot 2</option>
-            <option value="moon">Cold Spot 3</option>
-            <option value="moon">Tycho Creater</option>
+        <!-- STEP 1: Pilih Manual atau Otomatis -->
+        <section id="step-mode-selector" class="card-panel">
+            <h2>Pilih Mode Analisis</h2>
+            <p>Tentukan metode pencarian lokasi analogi Bulan:</p>
+            <div class="mode-buttons">
+                <button id="btn-mode-manual" class="btn-primary active" onclick="selectMode('manual')">
+                    Mode Manual (Pilih Lokasi Bulan)
+                </button>
+                <button id="btn-mode-auto" class="btn-secondary" onclick="selectMode('auto')">
+                    Mode Otomatis (Input Multi-Parameter)
+                </button>
+            </div>
+        </section>
 
+        <!-- STEP 2A: Jalur Manual - Pilih Lokasi di Bulan + Hover Preview -->
+        <section id="step-manual-moon" class="card-panel">
+            <div class="section-title-bar">
+                <h2>1. Pilih Lokasi di Bulan (Data Topografi LOLA / Diviner)</h2>
+                <span class="badge-info">Arahkan kursor untuk pratinjau • Klik untuk analisis analogi</span>
+            </div>
 
+            <div class="moon-selector-grid">
+                <!-- Kolom Kiri: Daftar Tombol Zona Bulan -->
+                <div id="moon-location-buttons" class="location-btn-list">
+                    <!-- Tombol di-generate otomatis oleh moon-logic.js -->
+                </div>
+
+                <!-- Kolom Kanan: Panel Hover Preview (Foto + Penjelasan Singkat) -->
+                <div id="moon-hover-preview" class="preview-box">
+                    <div class="preview-image-slot">
+                        <img id="preview-img" src="" alt="Pratinjau Wilayah Bulan" style="display: none;">
+                        <div id="preview-img-placeholder" class="img-placeholder-text">
+                            <span>[ Slot Foto Wilayah Bulan ]</span>
+                            <small id="preview-img-hint">Arahkan kursor ke salah satu tombol lokasi di samping</small>
+                        </div>
+                    </div>
+                    <div class="preview-details">
+                        <span id="preview-zone-tag" class="zone-tag">PRATINJAU ZONA</span>
+                        <h3 id="preview-title">Pilih atau Sentuh Titik Koordinat Bulan</h3>
+                        <p id="preview-coords" class="coords-text">Koordinat: - | Elevasi LOLA: -</p>
+                        <p id="preview-desc" class="desc-text">
+                            Arahkan kursor ke tombol lokasi di sebelah kiri untuk melihat karakteristik geologi, kemiringan (slope), dan suhu siang sebelum memilih.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 3A: Output Rekomendasi Analogi (Bumi) + Alasan Ilmiah -->
+        <section id="step-earth-recommendation" class="card-panel hidden">
+            <div class="section-title-bar">
+                <h2>2. Rekomendasi Analogi (Bumi)</h2>
+                <span id="match-score-badge" class="score-badge">Skor Kecocokan: -%</span>
+            </div>
+
+            <div class="recommendation-layout">
+                <!-- Ringkasan Titik Bulan Terpilih -->
+                <div class="selected-moon-summary">
+                    <h4>Target Lokasi Bulan Terpilih</h4>
+                    <h3 id="rec-moon-name">-</h3>
+                    <ul id="rec-moon-stats" class="stats-list"></ul>
+                </div>
+
+                <!-- Hasil Rekomendasi Bumi & Alasan -->
+                <div class="earth-match-card">
+                    <div class="earth-header">
+                        <span class="badge-earth">REKOMENDASI ANALOGI BUMI</span>
+                        <h3 id="rec-earth-name">-</h3>
+                        <p id="rec-earth-country" class="country-text">-</p>
+                    </div>
+
+                    <div class="earth-data-grid" id="rec-earth-metrics">
+                        <!-- Parameter Bumi dari dataset NASA di-render di sini -->
+                    </div>
+
+                    <div class="scientific-reason-box">
+                        <h4>🔬 Alasan Ilmiah Direkomendasikan:</h4>
+                        <ul id="rec-reasons-list">
+                            <!-- Poin alasan kecocokan ilmiah di-render di sini -->
+                        </ul>
+                    </div>
+
+                    <!-- Tombol Lanjut ke Tahap Flowchart Berikutnya -->
+                    <div class="next-action-bar">
+                        <button id="btn-proceed-flowchart" class="btn-primary">
+                            Lanjut Evaluasi Skor & Perbandingan →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Placeholder Tahap 2 (Mode Otomatis - Akan kita kerjakan setelah Tahap 1 oke) -->
+        <section id="step-auto-placeholder" class="card-panel hidden">
+            <h2>Mode Otomatis (Input Multi-Parameter Analogi)</h2>
+            <p><em>Bagian ini akan kita bangun di Tahap 2 setelah jalur Manual selesai direvisi.</em></p>
+        </section>
     </div>
 
     <script src="js/moon-logic.js"></script>

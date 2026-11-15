@@ -1,6 +1,5 @@
-// Planetary Dataset (Mars MOLA, 17 Moon Lunar Reconnaissance Zones & 16 Earth Analogs)
+// Planetary Dataset (Mars MOLA, 17 Moon Lunar Reconnaissance & 16 Earth Analogs)
 const marsLocationsData = [
-    // --- MARS MOLA ZONES (5 Sites) ---
     {
         id: "mars-candidate-1",
         name: "Acidalia Planitia Basin Zone",
@@ -13,7 +12,7 @@ const marsLocationsData = [
         roughness: 1.2,
         ironOxide: 1.85,
         ndvi: -0.05,
-        marsImagePath: "images/mars.png",
+        marsImagePath: "images/Center Latitude_ 55.234375, Center Longitude_ 22.265625.jpeg",
         marsImageHint: "Mars photo slot: Acidalia region",
         shortDesc: "Lowland sedimentary basin featuring smooth topography and high ice-consistency scoring.",
         earthAnalogs: [
@@ -26,10 +25,32 @@ const marsLocationsData = [
                 slope: 0.57,
                 roughness: 1.67,
                 ironOxide: 1.77,
-                clayMineral: 1.39,
-                ndvi: 0.015,
                 similarityScore: 88,
                 reasons: ["Negative basin topography models extreme Mars depressions with gentle slopes safe for lander entry."]
+            },
+            {
+                name: "Death Valley, USA",
+                type: "Extreme Heat / Evaporite",
+                country: "United States",
+                earthImagePath: "images/DeathValley_USA.png",
+                elevation: 281,
+                slope: 0.18,
+                roughness: 4.99,
+                ironOxide: 1.60,
+                similarityScore: 84,
+                reasons: ["Cracked salt crust polygons mimic permafrost and desiccated mud crack formations."]
+            },
+            {
+                name: "Atacama Desert, Chile",
+                type: "Hyper-arid Desert",
+                country: "Chile",
+                earthImagePath: "images/Atacama_Desert_Chile.png",
+                elevation: 2638,
+                slope: 0.66,
+                roughness: 4.80,
+                ironOxide: 1.75,
+                similarityScore: 81,
+                reasons: ["High iron oxide ratios produce characteristic red dust and oxidized soil identical to Martian regolith."]
             }
         ]
     },
@@ -45,7 +66,7 @@ const marsLocationsData = [
         roughness: 1.4,
         ironOxide: 1.92,
         ndvi: -0.02,
-        marsImagePath: "images/mars.png",
+        marsImagePath: "images/Center Latitude_ 42.734375, Center Longitude_ 176.171875.jpeg",
         marsImageHint: "Mars photo slot: Hellas region",
         shortDesc: "Deep impact crater floor with high thermal stability and optimized landing safety scores.",
         earthAnalogs: [
@@ -58,10 +79,20 @@ const marsLocationsData = [
                 slope: 0.18,
                 roughness: 4.99,
                 ironOxide: 1.60,
-                clayMineral: 1.13,
-                ndvi: 0.08,
-                similarityScore: 84,
-                reasons: ["Cracked salt crust polygons mimic permafrost and desiccated mud crack formations."]
+                similarityScore: 89,
+                reasons: ["Extreme arid depression with high evaporation rates mimicking ancient Martian lake beds."]
+            },
+            {
+                name: "Rio Tinto, Spain",
+                type: "Hematite/Sulfate Terrain",
+                country: "Spain",
+                earthImagePath: "images/Rio_Tinto_Spain.png",
+                elevation: 366,
+                slope: 0.09,
+                roughness: 2.10,
+                ironOxide: 3.10,
+                similarityScore: 85,
+                reasons: ["Abundant ferric iron oxides and extreme acidic water simulate subsurface mineral precipitation."]
             }
         ]
     },
@@ -77,7 +108,7 @@ const marsLocationsData = [
         roughness: 1.8,
         ironOxide: 2.15,
         ndvi: -0.02,
-        marsImagePath: "images/mars.png",
+        marsImagePath: "images/Center Latitude_ 52.109375, Center Longitude_ 167.578125.jpeg",
         marsImageHint: "Mars photo slot: Arcadia plains region",
         shortDesc: "Vast lowland plains dominated by iron oxide-rich regolith and flat terrain ideal for rover traversal.",
         earthAnalogs: [
@@ -90,10 +121,32 @@ const marsLocationsData = [
                 slope: 0.66,
                 roughness: 4.80,
                 ironOxide: 1.75,
-                clayMineral: 1.12,
-                ndvi: 0.067,
                 similarityScore: 92,
-                reasons: ["High iron oxide ratios produce characteristic red dust and oxidized soil identical to Martian regolith."]
+                reasons: ["Low slope angles make it a premier testing ground for autonomous rover navigation."]
+            },
+            {
+                name: "Namib Desert, Namibia",
+                type: "Iron-rich Dunes",
+                country: "Namibia",
+                earthImagePath: "images/Namib_Desert_Namibia.png",
+                elevation: 573,
+                slope: 0.40,
+                roughness: 8.41,
+                ironOxide: 2.90,
+                similarityScore: 87,
+                reasons: ["Extensive linear sand dunes and iron-stained quartz grains simulate aeolian transport mechanics."]
+            },
+            {
+                name: "Sahara Desert, Africa",
+                type: "Arid Sand Plains",
+                country: "North Africa",
+                earthImagePath: "images/Sahara_Desert_Africa.png",
+                elevation: 626,
+                slope: 0.08,
+                roughness: 4.41,
+                ironOxide: 3.22,
+                similarityScore: 83,
+                reasons: ["Vast flat desert expanses test long-range autonomous rover deployment capabilities."]
             }
         ]
     },
@@ -109,23 +162,33 @@ const marsLocationsData = [
         roughness: 1.5,
         ironOxide: 2.08,
         ndvi: -0.01,
-        marsImagePath: "images/mars.png",
+        marsImagePath: "images/Center Latitude_ 56.015625, Center Longitude_ 25.390625.jpeg",
         marsImageHint: "Mars photo slot: Utopia region",
         shortDesc: "Subsurface ice-rich mantle plains with low surface slope angles.",
         earthAnalogs: [
             {
-                name: "Namib Desert, Namibia",
-                type: "Iron-rich Dunes",
-                country: "Namibia",
-                earthImagePath: "images/Namib_Desert_Namibia.png",
-                elevation: 573,
-                slope: 0.40,
-                roughness: 8.41,
-                ironOxide: 2.90,
-                clayMineral: 1.06,
-                ndvi: 0.096,
-                similarityScore: 87,
-                reasons: ["Extensive linear sand dunes and iron-stained quartz grains simulate aeolian transport mechanics."]
+                name: "McMurdo Dry Valleys, Antarctica",
+                type: "Polar Cold Spot",
+                country: "Antarctica",
+                earthImagePath: "images/McMurdo_Dry_Valleys_Antarctica.png",
+                elevation: 629,
+                slope: 1.25,
+                roughness: 11.69,
+                ironOxide: 0.76,
+                similarityScore: 90,
+                reasons: ["Dry permafrost conditions test robotic drilling and subsurface ice detection tools."]
+            },
+            {
+                name: "Haughton Crater, Canada",
+                type: "Polar Impact Crater",
+                country: "Canada",
+                earthImagePath: "images/Haughton_Crater_Canada.png",
+                elevation: 152,
+                slope: 0.08,
+                roughness: 2.49,
+                ironOxide: 0.95,
+                similarityScore: 86,
+                reasons: ["Continuous permafrost environment simulating high-latitude Martian regolith properties."]
             }
         ]
     },
@@ -141,116 +204,76 @@ const marsLocationsData = [
         roughness: 2.2,
         ironOxide: 2.20,
         ndvi: -0.03,
-        marsImagePath: "images/mars.png",
+        marsImagePath: "images/Latitude_ 38.828125, Longitude_ 113.671875.jpeg",
         marsImageHint: "Mars photo slot: Elysium region",
         shortDesc: "Smooth volcanic smooth plains representing recent basaltic lava inundations.",
         earthAnalogs: [
             {
                 name: "Mauna Kea, Hawaii",
-                type: "Basaltic Volcanic (Mare)",
+                type: "Basaltic Volcanic",
                 country: "United States",
                 earthImagePath: "images/Mauna_Kea_Hawaii.png",
                 elevation: 3955,
                 slope: 0.00,
                 roughness: 12.19,
                 ironOxide: 1.82,
-                clayMineral: 1.02,
-                ndvi: 0.037,
                 similarityScore: 88,
-                reasons: ["Tholeiitic basalt flows match chemical composition of basaltic plains."]
+                reasons: ["Tholeiitic basalt flows match chemical composition of volcanic plains."]
+            },
+            {
+                name: "Craters of the Moon, USA",
+                type: "Lava Flows & Basalt",
+                country: "United States",
+                earthImagePath: "images/Craters_of_the_Moon_USA.png",
+                elevation: 1753,
+                slope: 0.39,
+                roughness: 6.50,
+                ironOxide: 1.50,
+                similarityScore: 85,
+                reasons: ["Rough basalt terrain provides excellent traction testing for rover mobility systems."]
             }
         ]
-    },
-
-    // --- MOON LUNAR RECONNAISSANCE ZONES (17 Sites Complete) ---
-    {
-        id: "moon-1", name: "Lunar South Pole / Shackleton Crater", zoneTag: "LUNAR HIGHLANDS • MOON DATA", category: "polar", lat: -89.90, lon: 0.00, elevation: 4200, slope: 5.2, roughness: 3.1, ironOxide: 0.85, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Moon polar region", shortDesc: "Permanently shadowed polar crater rim with potential water-ice deposits.",
-        earthAnalogs: [{ name: "McMurdo Dry Valleys, Antarctica", type: "Polar Cold Spot", country: "Antarctica", earthImagePath: "images/McMurdo_Dry_Valleys_Antarctica.png", elevation: 629, slope: 1.25, roughness: 11.69, ironOxide: 0.76, similarityScore: 90, reasons: ["Extreme cold temperatures and shadowed topography simulate polar volatile trapping."] }]
-    },
-    {
-        id: "moon-2", name: "Aitken Basin (South Pole-Aitken)", zoneTag: "LUNAR BASIN • MOON DATA", category: "basin", lat: -53.75, lon: 169.90, elevation: -2410, slope: 4.8, roughness: 2.9, ironOxide: 0.95, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Moon Aitken basin", shortDesc: "Largest, deepest, and oldest impact basin on the Moon.",
-        earthAnalogs: [{ name: "Haughton Crater, Canada", type: "Polar Impact Crater", country: "Canada", earthImagePath: "images/Haughton_Crater_Canada.png", elevation: 152, slope: 0.08, roughness: 2.49, ironOxide: 0.95, similarityScore: 86, reasons: ["True impact structure embedded in continuous permafrost."] }]
-    },
-    {
-        id: "moon-3", name: "Mare Tranquillitatis (Apollo 11)", zoneTag: "LUNAR MARE • MOON DATA", category: "plains", lat: 0.67, lon: 23.47, elevation: -850, slope: 1.5, roughness: 0.9, ironOxide: 1.10, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Mare Tranquillitatis", shortDesc: "Historic Apollo 11 lunar landing site on flat basaltic plains.",
-        earthAnalogs: [{ name: "Craters of the Moon, USA", type: "Lava Flows & Basalt", country: "United States", earthImagePath: "images/Craters_of_the_Moon_USA.png", elevation: 1753, slope: 0.39, roughness: 6.50, ironOxide: 1.50, similarityScore: 85, reasons: ["Basaltic lava flows mimic lunar mare basaltic plains."] }]
-    },
-    {
-        id: "moon-4", name: "Mare Imbrium (Sinus Iridum)", zoneTag: "LUNAR MARE • MOON DATA", category: "plains", lat: 32.80, lon: -31.50, elevation: -2500, slope: 2.1, roughness: 1.1, ironOxide: 1.20, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Mare Imbrium", shortDesc: "Prominent impact basin filled with extensive basaltic lava flows.",
-        earthAnalogs: [{ name: "Mauna Kea, Hawaii", type: "Basaltic Volcanic", country: "United States", earthImagePath: "images/Mauna_Kea_Hawaii.png", elevation: 3955, slope: 0.00, roughness: 12.19, ironOxide: 1.82, similarityScore: 88, reasons: ["Extensive tholeiitic basalt flows match mare chemistry."] }]
-    },
-    {
-        id: "moon-5", name: "Oceanus Procellarum", zoneTag: "LUNAR OCEAN • MOON DATA", category: "plains", lat: 18.40, lon: -57.40, elevation: -2700, slope: 1.2, roughness: 1.0, ironOxide: 1.25, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Oceanus Procellarum", shortDesc: "Largest maria region on the western edge of the Moon's near side.",
-        earthAnalogs: [{ name: "Sahara Desert, Africa", type: "Arid Sand Plains", country: "North Africa", earthImagePath: "images/Sahara_Desert_Africa.png", elevation: 626, slope: 0.08, roughness: 4.41, ironOxide: 3.22, similarityScore: 82, reasons: ["Vast flat basaltic and regolith plains simulate regional coverage."] }]
-    },
-    {
-        id: "moon-6", name: "Mare Serenitatis", zoneTag: "LUNAR MARE • MOON DATA", category: "plains", lat: 28.00, lon: 18.70, elevation: -2300, slope: 1.8, roughness: 1.3, ironOxide: 1.15, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Mare Serenitatis", shortDesc: "Circular lunar mare located east of Mare Imbrium.",
-        earthAnalogs: [{ name: "Craters of the Moon, USA", type: "Lava Flows & Basalt", country: "United States", earthImagePath: "images/Craters_of_the_Moon_USA.png", elevation: 1753, slope: 0.39, roughness: 6.50, ironOxide: 1.50, similarityScore: 84, reasons: ["Basaltic smooth plains."] }]
-    },
-    {
-        id: "moon-7", name: "Mare Crisium", zoneTag: "LUNAR MARE • MOON DATA", category: "basin", lat: 17.00, lon: 59.10, elevation: -3900, slope: 2.5, roughness: 1.4, ironOxide: 1.30, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Mare Crisium", shortDesc: "Basin located in the lunar crisium basin region with steep marginal fault scarps.",
-        earthAnalogs: [{ name: "Danakil Depression, Ethiopia", type: "Hydrothermal / Salt", country: "Ethiopia", earthImagePath: "images/Danakil_Depression_Ethiopia.png", elevation: -111, slope: 0.57, roughness: 1.67, ironOxide: 1.77, similarityScore: 83, reasons: ["Enclosed basin floor structure."] }]
-    },
-    {
-        id: "moon-8", name: "Typhoon Crater (Tycho)", zoneTag: "LUNAR CRATER • MOON DATA", category: "volcanic", lat: -43.30, lon: -11.20, elevation: -100, slope: 12.5, roughness: 6.5, ironOxide: 0.90, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Tycho Crater", shortDesc: "Prominent rayed impact crater with steep terraced walls and central peak.",
-        earthAnalogs: [{ name: "Meteor Crater, USA", type: "Simple Impact Crater", country: "United States", earthImagePath: "images/Meteor_Crater_USA.png", elevation: 1681, slope: 0.02, roughness: 3.70, ironOxide: 2.06, similarityScore: 89, reasons: ["Classic bowl-shaped impact crater morphology with ejected breccia."] }]
-    },
-    {
-        id: "moon-9", name: "Copernicus Crater", zoneTag: "LUNAR CRATER • MOON DATA", category: "volcanic", lat: 9.70, lon: -20.00, elevation: -900, slope: 11.2, roughness: 5.8, ironOxide: 1.05, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Copernicus Crater", shortDesc: "Major lunar impact crater featuring prominent central peaks and slumped terraces.",
-        earthAnalogs: [{ name: "Haughton Crater, Canada", type: "Polar Impact Crater", country: "Canada", earthImagePath: "images/Haughton_Crater_Canada.png", elevation: 152, slope: 0.08, roughness: 2.49, ironOxide: 0.95, similarityScore: 86, reasons: ["Complex impact crater mechanics."] }]
-    },
-    {
-        id: "moon-10", name: "Aristarchus Plateau", zoneTag: "LUNAR HIGHLANDS • MOON DATA", category: "volcanic", lat: 23.70, lon: -47.40, elevation: 1200, slope: 6.1, roughness: 3.4, ironOxide: 1.40, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Aristarchus Plateau", shortDesc: "Geologically diverse plateau with pyroclastic deposits and sinuous rilles.",
-        earthAnalogs: [{ name: "Vatnajokull National Park, Iceland", type: "Basaltic Volcanic", country: "Iceland", earthImagePath: "images/Vatnajokull_Iceland.png", elevation: 1501, slope: 0.51, roughness: 0.96, ironOxide: 0.94, similarityScore: 87, reasons: ["Basaltic fissure and volcanic rille structures."] }]
-    },
-    {
-        id: "moon-11", name: "Mare Fecunditatis", zoneTag: "LUNAR MARE • MOON DATA", category: "plains", lat: -7.80, lon: 51.30, elevation: -2500, slope: 1.3, roughness: 1.0, ironOxide: 1.12, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Mare Fecunditatis", shortDesc: "Lunar mare characterized by irregular mare patches and dark mantling deposits.",
-        earthAnalogs: [{ name: "Sahara Desert, Africa", type: "Arid Sand Plains", country: "North Africa", earthImagePath: "images/Sahara_Desert_Africa.png", elevation: 626, slope: 0.08, roughness: 4.41, ironOxide: 3.22, similarityScore: 81, reasons: ["Extensive flat regolith plains."] }]
-    },
-    {
-        id: "moon-12", name: "Mare Nectaris", zoneTag: "LUNAR MARE • MOON DATA", category: "basin", lat: -15.20, lon: 35.50, elevation: -2800, slope: 2.0, roughness: 1.5, ironOxide: 1.18, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Mare Nectaris", shortDesc: "Small lunar mare basin surrounded by rugged highland ring faults.",
-        earthAnalogs: [{ name: "Danakil Depression, Ethiopia", type: "Hydrothermal / Salt", country: "Ethiopia", earthImagePath: "images/Danakil_Depression_Ethiopia.png", elevation: -111, slope: 0.57, roughness: 1.67, ironOxide: 1.77, similarityScore: 80, reasons: ["Ring fault basin topography."] }]
-    },
-    {
-        id: "moon-13", name: "Sinus Aestuum", zoneTag: "LUNAR BAY • MOON DATA", category: "plains", lat: 10.90, lon: -8.80, elevation: -1400, slope: 1.6, roughness: 1.2, ironOxide: 1.35, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Sinus Aestuum", shortDesc: "Dark pyroclastic deposit bay located along the southern edge of Mare Imbrium.",
-        earthAnalogs: [{ name: "Namib Desert, Namibia", type: "Iron-rich Dunes", country: "Namibia", earthImagePath: "images/Namib_Desert_Namibia.png", elevation: 573, slope: 0.40, roughness: 8.41, ironOxide: 2.90, similarityScore: 83, reasons: ["Dark fine-grained pyroclastic and sand simulations."] }]
-    },
-    {
-        id: "moon-14", name: "Oriental Basin (Mare Orientale)", zoneTag: "LUNAR BASIN • MOON DATA", category: "basin", lat: -19.80, lon: -92.80, elevation: -3000, slope: 3.5, roughness: 2.1, ironOxide: 1.00, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Mare Orientale", shortDesc: "Striking multi-ring impact basin located on the western limb of the Moon.",
-        earthAnalogs: [{ name: "Haughton Crater, Canada", type: "Polar Impact Crater", country: "Canada", earthImagePath: "images/Haughton_Crater_Canada.png", elevation: 152, slope: 0.08, roughness: 2.49, ironOxide: 0.95, similarityScore: 85, reasons: ["Concentric impact ring structures."] }]
-    },
-    {
-        id: "moon-15", name: "Kepler Crater", zoneTag: "LUNAR CRATER • MOON DATA", category: "volcanic", lat: 8.10, lon: -38.00, elevation: -1100, slope: 9.8, roughness: 4.5, ironOxide: 1.08, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Kepler Crater", shortDesc: "Prominent rayed impact crater situated between Oceanus Procellarum and Mare Insularum.",
-        earthAnalogs: [{ name: "Meteor Crater, USA", type: "Simple Impact Crater", country: "United States", earthImagePath: "images/Meteor_Crater_USA.png", elevation: 1681, slope: 0.02, roughness: 3.70, ironOxide: 2.06, similarityScore: 86, reasons: ["Impact ejecta blanket characteristics."] }]
-    },
-    {
-        id: "moon-16", name: "Plato Crater", zoneTag: "LUNAR CRATER • MOON DATA", category: "basin", lat: 51.60, lon: -9.30, elevation: -2000, slope: 2.2, roughness: 1.3, ironOxide: 0.92, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Plato Crater", shortDesc: "Large lunar impact crater with a flat, dark, lava-flooded floor.",
-        earthAnalogs: [{ name: "Death Valley, USA", type: "Extreme Heat / Evaporite", country: "United States", earthImagePath: "images/DeathValley_USA.png", elevation: 281, slope: 0.18, roughness: 4.99, ironOxide: 1.60, similarityScore: 82, reasons: ["Flat sediment-floored impact enclosure."] }]
-    },
-    {
-        id: "moon-17", name: "Atlas Crater", zoneTag: "LUNAR HIGHLANDS • MOON DATA", category: "volcanic", lat: 46.70, lon: 44.40, elevation: -600, slope: 8.1, roughness: 3.9, ironOxide: 0.98, ndvi: 0.0, marsImagePath: "images/moon.png", marsImageHint: "Atlas Crater", shortDesc: "Complex impact crater located in the northeastern quadrant of the Moon near Mare Frigoris.",
-        earthAnalogs: [{ name: "Vatnajokull National Park, Iceland", type: "Basaltic Volcanic", country: "Iceland", earthImagePath: "images/Vatnajokull_Iceland.png", elevation: 1501, slope: 0.51, roughness: 0.96, ironOxide: 0.94, similarityScore: 84, reasons: ["Rugged high-latitude highland volcanic rim structures."] }]
     }
 ];
 
-// Complete 16 locations master array synchronized with Google Drive spreadsheet
+// Complete dataset for Google Drive Preview Modal (Mars, 17 Moon, 16 Earth)
+const completeMoonDataset = [
+    { name: "Lunar South Pole / Shackleton Crater", ref: "Lunar Reconnaissance", lat: -89.90, lon: 0.00, elev: 4200, slope: 5.2 },
+    { name: "Aitken Basin (South Pole-Aitken)", ref: "Lunar Reconnaissance", lat: -53.75, lon: 169.90, elev: -2410, slope: 4.8 },
+    { name: "Mare Tranquillitatis (Apollo 11)", ref: "Lunar Reconnaissance", lat: 0.67, lon: 23.47, elev: -850, slope: 1.5 },
+    { name: "Mare Imbrium (Sinus Iridum)", ref: "Lunar Reconnaissance", lat: 32.80, lon: -31.50, elev: -2500, slope: 2.1 },
+    { name: "Oceanus Procellarum", ref: "Lunar Reconnaissance", lat: 18.40, lon: -57.40, elev: -2700, slope: 1.2 },
+    { name: "Mare Serenitatis", ref: "Lunar Reconnaissance", lat: 28.00, lon: 18.70, elev: -2300, slope: 1.8 },
+    { name: "Mare Crisium", ref: "Lunar Reconnaissance", lat: 17.00, lon: 59.10, elev: -3900, slope: 2.5 },
+    { name: "Tycho Crater", ref: "Lunar Reconnaissance", lat: -43.30, lon: -11.20, elev: -100, slope: 12.5 },
+    { name: "Copernicus Crater", ref: "Lunar Reconnaissance", lat: 9.70, lon: -20.00, elev: -900, slope: 11.2 },
+    { name: "Aristarchus Plateau", ref: "Lunar Reconnaissance", lat: 23.70, lon: -47.40, elev: 1200, slope: 6.1 },
+    { name: "Mare Fecunditatis", ref: "Lunar Reconnaissance", lat: -7.80, lon: 51.30, elev: -2500, slope: 1.3 },
+    { name: "Mare Nectaris", ref: "Lunar Reconnaissance", lat: -15.20, lon: 35.50, elev: -2800, slope: 2.0 },
+    { name: "Sinus Aestuum", ref: "Lunar Reconnaissance", lat: 10.90, lon: -8.80, elev: -1400, slope: 1.6 },
+    { name: "Mare Orientale", ref: "Lunar Reconnaissance", lat: -19.80, lon: -92.80, elev: -3000, slope: 3.5 },
+    { name: "Kepler Crater", ref: "Lunar Reconnaissance", lat: 8.10, lon: -38.00, elev: -1100, slope: 9.8 },
+    { name: "Plato Crater", ref: "Lunar Reconnaissance", lat: 51.60, lon: -9.30, elev: -2000, slope: 2.2 },
+    { name: "Atlas Crater", ref: "Lunar Reconnaissance", lat: 46.70, lon: 44.40, elev: -600, slope: 8.1 }
+];
+
 const completeDriveDataset = [
-    { name: "Gunung Bromo, Indonesia", type: "Volcanic Caldera", target: "Moon & Mars", lat: -7.9425, lon: 112.953, elev: 2235.65, slope: 0.013 },
-    { name: "Mauna Kea, Hawaii", type: "Basaltic Volcanic (Mare)", target: "Moon", lat: 19.8207, lon: -155.4681, elev: 3955.32, slope: 0.00 },
+    { name: "Gunung Bromo, Indonesia", type: "Volcanic Caldera", target: "Mars", lat: -7.9425, lon: 112.953, elev: 2235.65, slope: 0.013 },
+    { name: "Mauna Kea, Hawaii", type: "Basaltic Volcanic", target: "Mars", lat: 19.8207, lon: -155.4681, elev: 3955.32, slope: 0.00 },
     { name: "Atacama Desert, Chile", type: "Hyper-arid Desert", target: "Mars", lat: -23.8634, lon: -69.1328, elev: 2638.53, slope: 0.66 },
-    { name: "Haughton Crater, Canada", type: "Polar Impact Crater", target: "Moon & Mars", lat: 75.3833, lon: -89.6667, elev: 152.79, slope: 0.08 },
-    { name: "Craters of the Moon, USA", type: "Lava Flows & Tubes", target: "Moon", lat: 43.4167, lon: -113.5167, elev: 1753.01, slope: 0.39 },
+    { name: "Haughton Crater, Canada", type: "Polar Impact Crater", target: "Mars", lat: 75.3833, lon: -89.6667, elev: 152.79, slope: 0.08 },
+    { name: "Craters of the Moon, USA", type: "Lava Flows & Tubes", target: "Mars", lat: 43.4167, lon: -113.5167, elev: 1753.01, slope: 0.39 },
     { name: "Namib Desert, Namibia", type: "Iron-rich Dunes", target: "Mars", lat: -24.7575, lon: 15.2764, elev: 573.71, slope: 0.40 },
-    { name: "McMurdo Dry Valleys, Antarctica", type: "Polar Cold Spot", target: "Moon & Mars", lat: -77.4728, lon: 162.5228, elev: 629.13, slope: 1.25 },
-    { name: "Meteor Crater, USA", type: "Simple Impact Crater", target: "Moon & Mars", lat: 35.0272, lon: -111.0225, elev: 1681.95, slope: 0.02 },
+    { name: "McMurdo Dry Valleys, Antarctica", type: "Polar Cold Spot", target: "Mars", lat: -77.4728, lon: 162.5228, elev: 629.13, slope: 1.25 },
+    { name: "Meteor Crater, USA", type: "Simple Impact Crater", target: "Mars", lat: 35.0272, lon: -111.0225, elev: 1681.95, slope: 0.02 },
     { name: "Rio Tinto, Spain", type: "Hematite/Sulfate Terrain", target: "Mars", lat: 37.7022, lon: -6.5514, elev: 366.22, slope: 0.09 },
     { name: "Danakil Depression, Ethiopia", type: "Hydrothermal/Salt", target: "Mars", lat: 14.2417, lon: 40.30, elev: -111.18, slope: 0.57 },
-    { name: "Vatnajokull National Park, Iceland", type: "Basaltic Volcanic Terrain", target: "Moon & Mars", lat: 64.40, lon: -16.80, elev: 1501.75, slope: 0.51 },
-    { name: "Sahara Desert, Africa", type: "Arid Sand Plains", target: "Moon & Mars", lat: 25.066, lon: 13.399, elev: 626.91, slope: 0.08 },
-    { name: "Tibetan Plateau / Karakoram, Asia", type: "Highland Relief", target: "Moon", lat: 32.50, lon: 86.925, elev: 5094.32, slope: 0.06 },
+    { name: "Vatnajokull National Park, Iceland", type: "Basaltic Volcanic Terrain", target: "Mars", lat: 64.40, lon: -16.80, elev: 1501.75, slope: 0.51 },
+    { name: "Sahara Desert, Africa", type: "Arid Sand Plains", target: "Mars", lat: 25.066, lon: 13.399, elev: 626.91, slope: 0.08 },
+    { name: "Tibetan Plateau / Karakoram, Asia", type: "Highland Relief", target: "Mars", lat: 32.50, lon: 86.925, elev: 5094.32, slope: 0.06 },
     { name: "Pinnacles Desert, Australia", type: "Karst / Rugged Limestone", target: "Mars", lat: -30.60, lon: 115.16, elev: 65.52, slope: 0.12 },
-    { name: "Death Valley, USA", type: "Extreme Heat / Evaporite", target: "Moon & Mars", lat: 36.532, lon: -116.825, elev: 281.11, slope: 0.18 },
-    { name: "Mount Etna, Italy", type: "Active Basalt Lava (Mare)", target: "Moon", lat: 37.751, lon: 14.9934, elev: 2913.28, slope: 0.06 }
+    { name: "Death Valley, USA", type: "Extreme Heat / Evaporite", target: "Mars", lat: 36.532, lon: -116.825, elev: 281.11, slope: 0.18 },
+    { name: "Mount Etna, Italy", type: "Active Basalt Lava", target: "Mars", lat: 37.751, lon: 14.9934, elev: 2913.28, slope: 0.06 }
 ];
 
 let selectedMarsLocation = null;
@@ -407,7 +430,7 @@ function renderEvaluationAndComparison(loc, analog) {
     if (analog.similarityScore >= 75) {
         evalBox.className = "evaluation-box";
         evalTitle.textContent = `Status: Qualified Primary Analog Site (${analog.similarityScore}% ≥ 75%)`;
-        evalDesc.textContent = "This site exhibits extremely high topographic, slope, and mineralogical correlation with the planetary target.";
+        evalDesc.textContent = "This site exhibits extremely high topographic, slope, and mineralogical correlation with the Mars target.";
         evalBadge.textContent = "STATUS: VALID (PRIMARY)";
         evalBadge.style.background = "#10b981";
     } else {
@@ -474,7 +497,7 @@ function runAutoMatching() {
     resultContainer.classList.remove("hidden");
 
     if (filtered.length === 0) {
-        resultList.innerHTML = `<p style="color: #f59e0b; grid-column: span 2;">No target locations matched this strict filter criteria.</p>`;
+        resultList.innerHTML = `<p style="color: #f59e0b; grid-column: span 2;">No Mars target locations matched this strict filter criteria.</p>`;
         return;
     }
 
@@ -485,7 +508,7 @@ function runAutoMatching() {
         card.className = "earth-match-card-item";
         card.innerHTML = `
             <div>
-                <span class="badge-info" style="font-size:0.75rem;">Target: ${loc.name}</span>
+                <span class="badge-info" style="font-size:0.75rem;">Mars Target: ${loc.name}</span>
                 <div class="earth-image-slot" style="height: 120px; margin-top: 0.5rem;">
                     <img src="${topAnalog.earthImagePath}" alt="Earth" onerror="this.style.display='none'">
                 </div>
@@ -516,7 +539,7 @@ function populateDriveModalTable() {
     const marsTbody = document.getElementById("modal-mars-table-body");
     if (marsTbody) {
         marsTbody.innerHTML = "";
-        marsLocationsData.filter(l => l.zoneTag.includes("MARS")).forEach(loc => {
+        marsLocationsData.forEach(loc => {
             const tr = document.createElement("tr");
             tr.style.borderBottom = "1px solid rgba(148, 163, 184, 0.15)";
             tr.innerHTML = `
@@ -530,25 +553,25 @@ function populateDriveModalTable() {
         });
     }
 
-    // 2. Render Moon Table (Memuat ke-17 Lokasi Lengkap)
+    // 2. Render Moon Table (17 Complete Sites)
     const moonTbody = document.getElementById("modal-moon-table-body");
     if (moonTbody) {
         moonTbody.innerHTML = "";
-        marsLocationsData.filter(l => l.zoneTag.includes("MOON")).forEach(loc => {
+        completeMoonDataset.forEach(item => {
             const tr = document.createElement("tr");
             tr.style.borderBottom = "1px solid rgba(148, 163, 184, 0.15)";
             tr.innerHTML = `
-                <td style="padding: 8px; font-weight: 600; color: #f8fafc;">${loc.name}</td>
-                <td style="padding: 8px; color: #38bdf8;">Lunar Reconnaissance</td>
-                <td style="padding: 8px; font-family: monospace;">${loc.lat}°, ${loc.lon}°</td>
-                <td style="padding: 8px;">${loc.elevation > 0 ? "+" : ""}${loc.elevation} m</td>
-                <td style="padding: 8px;">${loc.slope}°</td>
+                <td style="padding: 8px; font-weight: 600; color: #f8fafc;">${item.name}</td>
+                <td style="padding: 8px; color: #38bdf8;">${item.ref}</td>
+                <td style="padding: 8px; font-family: monospace;">${item.lat}°, ${item.lon}°</td>
+                <td style="padding: 8px;">${item.elev > 0 ? "+" : ""}${item.elev} m</td>
+                <td style="padding: 8px;">${item.slope}°</td>
             `;
             moonTbody.appendChild(tr);
         });
     }
 
-    // 3. Render Earth Table (Memuat SEMUA 16 Lokasi Lengkap dari Google Drive)
+    // 3. Render Earth Table (16 Complete Sites)
     const earthTbody = document.getElementById("modal-earth-table-body");
     if (earthTbody) {
         earthTbody.innerHTML = "";

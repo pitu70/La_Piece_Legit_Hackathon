@@ -8,7 +8,16 @@
     <link rel="stylesheet" href="css/custom-hackathon.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    
     <style>
+        /* =====================================================
+   A-POLA-GIS | MOON ANALOG DASHBOARD
+   DESIGN SYSTEM: LA PIECE LEGIT
+   STYLE ONLY — PRESERVE ALL HTML & JAVASCRIPT
+===================================================== */
+
+/* 1. GLOBAL DESIGN SYSTEM
+===================================================== */
 
 :root {
     --space: #070810;
@@ -38,10 +47,11 @@ html {
 }
 
 body {
-    background: #070810 !important;
+    background: var(--space) !important;
     color: var(--white) !important;
     font-family: var(--font-body) !important;
     overflow-x: hidden;
+    position: relative;
 }
 
 /* 2. GALAXY BACKGROUND
@@ -84,7 +94,10 @@ body::after {
     background-size: 65px 65px;
 }
 
-.moon-container {
+/* 3. MAIN CONTAINER
+===================================================== */
+
+.mars-container {
     position: relative;
     z-index: 1;
 
@@ -95,10 +108,10 @@ body::after {
     padding-bottom: 60px;
 }
 
-/* 3. HEADER
+/* 4. HEADER
 ===================================================== */
 
-.moon-header {
+.mars-header {
     position: relative;
 
     padding: 45px 20px 55px;
@@ -109,7 +122,7 @@ body::after {
     border-bottom: 1px solid var(--border);
 }
 
-.moon-header h1 {
+.mars-header h1 {
     font-family: var(--font-heading) !important;
 
     font-size: clamp(25px,4vw,48px);
@@ -117,20 +130,19 @@ body::after {
 
     letter-spacing: 3px;
 
-    color: var(--white);
+    color: var(--white) !important;
 
     margin: 25px 0 15px;
 
     text-shadow:
-        0 0 35px rgba(197,208,230,0.18);
+        0 0 35px rgba(197,208,230,.18);
 }
 
-.moon-header .subtitle {
+.mars-header .subtitle {
     max-width: 850px;
-
     margin: auto;
 
-    color: var(--muted);
+    color: var(--muted) !important;
 
     font-size: 14px;
     line-height: 1.8;
@@ -149,16 +161,13 @@ body::after {
     padding: 11px 20px;
 
     border: 1px solid rgba(197,208,230,.4);
-
     background: rgba(197,208,230,.07);
 
     color: var(--moon) !important;
-
     text-decoration: none;
 
     font-size: 11px;
     font-weight: 700;
-
     letter-spacing: 1px;
 
     transition: .3s;
@@ -166,13 +175,11 @@ body::after {
 
 .btn-back:hover {
     background: rgba(197,208,230,.16);
-
     border-color: var(--moon);
-
     transform: translateX(-4px);
 }
 
-/* 4. DASHBOARD PANELS
+/* 5. DASHBOARD PANELS
 ===================================================== */
 
 .card-panel {
@@ -189,7 +196,6 @@ body::after {
         ) !important;
 
     border: 1px solid var(--border) !important;
-
     border-radius: 3px !important;
 
     box-shadow:
@@ -207,12 +213,10 @@ body::after {
 
 .card-panel h2 {
     font-family: var(--font-heading) !important;
-
     color: var(--white) !important;
 
     font-size: 20px;
     font-weight: 700;
-
     letter-spacing: .5px;
 
     margin-bottom: 15px;
@@ -230,7 +234,6 @@ body::after {
 
 .card-panel p {
     color: var(--muted);
-
     line-height: 1.8;
     font-size: 13px;
 }
@@ -256,7 +259,7 @@ body::after {
     margin: 0;
 }
 
-/* 5. BADGES
+/* 6. BADGES
 ===================================================== */
 
 .badge-info,
@@ -280,7 +283,7 @@ body::after {
     color: var(--moon);
 }
 
-/* 6. BUTTON SYSTEM
+/* 7. BUTTON SYSTEM
 ===================================================== */
 
 .btn-primary,
@@ -291,7 +294,6 @@ body::after {
 
     font-size: 12px;
     font-weight: 700;
-
     letter-spacing: 1px;
 
     border: 1px solid transparent;
@@ -345,10 +347,9 @@ body::after {
 
 .mode-buttons {
     display: flex;
-
     flex-wrap: wrap;
-    gap: 15px;
 
+    gap: 15px;
     margin-top: 22px;
 }
 
@@ -357,10 +358,10 @@ body::after {
         0 0 25px rgba(197,208,230,.2);
 }
 
-/* 7. LOCATION SELECTOR
+/* 8. LOCATION SELECTOR
 ===================================================== */
 
-.moon-selector-grid {
+.mars-selector-grid {
     display: grid;
 
     grid-template-columns:
@@ -368,18 +369,23 @@ body::after {
         minmax(300px,1.5fr);
 
     gap: 25px;
-
     align-items: stretch;
 }
 
 .location-btn-list {
     display: flex;
-
     flex-direction: column;
+
     gap: 10px;
+
+    max-height: 460px;
+    overflow-y: auto;
+
+    padding-right: 6px;
 }
 
-.location-btn-list button {
+.location-btn-list button,
+.location-btn-list .mars-loc-btn {
     width: 100%;
 
     padding: 15px;
@@ -401,7 +407,9 @@ body::after {
 }
 
 .location-btn-list button:hover,
-.location-btn-list button.active {
+.location-btn-list button.active,
+.location-btn-list .mars-loc-btn:hover,
+.location-btn-list .mars-loc-btn.selected {
     background: rgba(197,208,230,.09);
 
     border-color: var(--moon);
@@ -409,19 +417,22 @@ body::after {
     transform: translateX(4px);
 }
 
-/* 8. PREVIEW PANEL
+.mars-loc-btn .elev-pill {
+    color: var(--cyan);
+}
+
+/* 9. PREVIEW PANEL
 ===================================================== */
 
 .preview-box {
     display: flex;
-
     flex-direction: column;
 
     overflow: hidden;
 
     background: rgba(5,7,15,.6);
 
-    border: 1px solid rgba(255,255,255,.1);
+    border: 1px solid rgba(197,208,230,.3);
 
     min-height: 350px;
 }
@@ -454,7 +465,6 @@ body::after {
     inset: 0;
 
     display: flex;
-
     flex-direction: column;
 
     justify-content: center;
@@ -466,6 +476,10 @@ body::after {
 
     font-size: 11px;
     letter-spacing: 2px;
+}
+
+.img-placeholder-text span {
+    color: var(--moon-light);
 }
 
 .img-placeholder-text small {
@@ -481,7 +495,6 @@ body::after {
     margin: 15px 0;
 
     font-family: var(--font-heading);
-
     font-size: 19px;
 }
 
@@ -494,7 +507,7 @@ body::after {
     margin-top: 12px;
 }
 
-/* 9. RECOMMENDATION SECTION
+/* 10. RECOMMENDATION SECTION
 ===================================================== */
 
 .recommendation-layout {
@@ -507,7 +520,7 @@ body::after {
     gap: 25px;
 }
 
-.selected-moon-summary {
+.selected-mars-summary {
     padding: 25px;
 
     background: rgba(197,208,230,.055);
@@ -515,7 +528,7 @@ body::after {
     border: 1px solid rgba(197,208,230,.25);
 }
 
-.selected-moon-summary h3 {
+.selected-mars-summary h3 {
     font-size: 22px;
 
     color: var(--moon);
@@ -537,9 +550,20 @@ body::after {
 .earth-match-card {
     padding: 25px;
 
-    background: rgba(255,255,255,.025);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,24,40,.85),
+            rgba(8,11,21,.92)
+        );
 
     border: 1px solid var(--border);
+
+    transition: border-color .3s;
+}
+
+.earth-match-card:hover {
+    border-color: rgba(197,208,230,.3);
 }
 
 .earth-header {
@@ -580,7 +604,6 @@ body::after {
         repeat(auto-fit,minmax(130px,1fr));
 
     gap: 12px;
-
     margin-bottom: 25px;
 }
 
@@ -600,6 +623,34 @@ body::after {
     transform: translateY(-3px);
 }
 
+/* Automatic Mode Inputs */
+
+.metric-box {
+    padding: 20px;
+
+    background: rgba(255,255,255,.025);
+
+    border: 1px solid var(--border);
+}
+
+.metric-box input,
+.metric-box select {
+    font-family: var(--font-body) !important;
+
+    background: #111525 !important;
+
+    color: var(--white) !important;
+
+    border: 1px solid rgba(255,255,255,.15) !important;
+
+    outline: none;
+}
+
+.metric-box input:focus,
+.metric-box select:focus {
+    border-color: var(--cyan) !important;
+}
+
 /* Scientific Reason */
 
 .scientific-reason-box {
@@ -612,7 +663,6 @@ body::after {
 
 .scientific-reason-box h4 {
     color: var(--cyan);
-
     margin-bottom: 15px;
 }
 
@@ -635,7 +685,7 @@ body::after {
     margin-top: 25px;
 }
 
-/* 10. AUTO PLACEHOLDER
+/* 11. AUTO MODE
 ===================================================== */
 
 #step-auto-placeholder {
@@ -646,11 +696,92 @@ body::after {
     color: var(--muted);
 }
 
-/* 11. SCROLLBAR
+/* 12. EVALUATION PANEL
+===================================================== */
+
+.evaluation-box {
+    background:
+        linear-gradient(
+            120deg,
+            rgba(197,208,230,.07),
+            rgba(80,232,240,.035)
+        ) !important;
+
+    border: 1px solid rgba(197,208,230,.3) !important;
+
+    border-radius: 3px !important;
+}
+
+.evaluation-box h3 {
+    color: var(--moon) !important;
+}
+
+/* 13. SCIENTIFIC TABLE
+===================================================== */
+
+.table-responsive {
+    border: 1px solid var(--border);
+
+    background: rgba(5,7,15,.4);
+}
+
+.comparison-table {
+    min-width: 650px;
+
+    border-collapse: collapse;
+
+    color: var(--muted);
+
+    font-family: var(--font-body);
+}
+
+.comparison-table thead tr {
+    background: rgba(255,255,255,.045) !important;
+}
+
+.comparison-table th {
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+.comparison-table td {
+    font-size: 12px;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 13px !important;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.comparison-table tbody tr {
+    transition: background .2s;
+}
+
+.comparison-table tbody tr:hover {
+    background: rgba(80,232,240,.035);
+}
+
+/* 14. HIDDEN ELEMENTS
+===================================================== */
+
+.hidden {
+    display: none !important;
+}
+
+/* 15. SCROLLBAR
 ===================================================== */
 
 ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -659,7 +790,6 @@ body::after {
 
 ::-webkit-scrollbar-thumb {
     background: #34394a;
-
     border-radius: 10px;
 }
 
@@ -667,12 +797,12 @@ body::after {
     background: var(--moon);
 }
 
-/* 12. RESPONSIVE TABLET
+/* 16. RESPONSIVE TABLET
 ===================================================== */
 
 @media(max-width:1000px) {
 
-    .moon-container {
+    .mars-container {
         width: 95%;
     }
 
@@ -680,32 +810,32 @@ body::after {
         padding: 23px;
     }
 
-    .moon-selector-grid,
+    .mars-selector-grid,
     .recommendation-layout {
         grid-template-columns: 1fr;
     }
 
 }
 
-/* 13. RESPONSIVE MOBILE
+/* 17. RESPONSIVE MOBILE
 ===================================================== */
 
 @media(max-width:700px) {
 
-    .moon-container {
+    .mars-container {
         width: 94%;
     }
 
-    .moon-header {
+    .mars-header {
         padding: 65px 10px 35px;
     }
 
-    .moon-header h1 {
+    .mars-header h1 {
         font-size: 25px;
         letter-spacing: 1px;
     }
 
-    .moon-header .subtitle {
+    .mars-header .subtitle {
         font-size: 12px;
     }
 
@@ -728,7 +858,6 @@ body::after {
 
     .section-title-bar {
         align-items: flex-start;
-
         flex-direction: column;
     }
 
@@ -766,7 +895,7 @@ body::after {
 
 }
 
-/* 14. ACCESSIBILITY
+/* 18. ACCESSIBILITY
 ===================================================== */
 
 @media(prefers-reduced-motion:reduce) {
@@ -782,17 +911,6 @@ body::after {
     }
 
 }
-
-</style>
-    <style>
-        /* Penyesuaian aksen warna Bulan */
-        .btn-primary { background: linear-gradient(135deg, #0284c7, #38bdf8); color: #0f172a; }
-        .btn-primary:hover { box-shadow: 0 4px 15px rgba(56, 189, 248, 0.45); }
-        .mars-loc-btn:hover, .mars-loc-btn.selected { background: rgba(56, 189, 248, 0.16); border-color: #38bdf8; }
-        .mars-loc-btn .elev-pill, .coords-text { color: #7dd3fc; }
-        .preview-box { border-color: rgba(56, 189, 248, 0.35); }
-        .img-placeholder-text span { color: #38bdf8; }
-        .location-btn-list { max-height: 460px; overflow-y: auto; padding-right: 6px; }
     </style>
 
 </head>

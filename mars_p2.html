@@ -2,16 +2,119 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Analisis Bumi - Mars</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Analog Explorer - La Piece Legit</title>
     <link rel="stylesheet" href="css/templatemo-nexaverse.css">
     <link rel="stylesheet" href="css/custom-hackathon.css">
 </head>
 <body>
-    <div class="container" style="padding-top: 40px;">
-        <a href="index.html" class="back-btn" style="display:inline-block; margin-bottom:20px;">← Kembali</a>
-        <h2 class="section-title" style="color: #ff5e3a;">ANALISIS ANALOGI: BUMI ↔ MARS</h2>
-        <!-- Programmer 2 mulai ngoding form & tabel perbandingan Bumi-Mars di sini -->
+    <div class="mars-container">
+        <!-- Header Navigasi -->
+        <header class="mars-header">
+            <a href="index.html" class="btn-back">← Welcome Page</a>
+            <h1>MARS ANALOG MISSION SYSTEM</h1>
+            <p class="subtitle">Pemetaan Topografi MOLA & Rekomendasi Analogi Lingkungan Bumi</p>
+        </header>
+
+        <!-- STEP 1: Pilih Manual atau Otomatis (Sesuai Flowchart) -->
+        <section id="step-mode-selector" class="card-panel">
+            <h2>Pilih Mode Analisis</h2>
+            <p>Tentukan metode pencarian lokasi analogi planet Mars:</p>
+            <div class="mode-buttons">
+                <button id="btn-mode-manual" class="btn-primary active" onclick="selectMode('manual')">
+                    Mode Manual (Pilih Lokasi Mars)
+                </button>
+                <button id="btn-mode-auto" class="btn-secondary" onclick="selectMode('auto')">
+                    Mode Otomatis (Input Multi-Parameter)
+                </button>
+            </div>
+        </section>
+
+        <!-- STEP 2A: Jalur Manual - Pilih Lokasi di Mars + Hover Preview -->
+        <section id="step-manual-mars" class="card-panel">
+            <div class="section-title-bar">
+                <h2>1. Pilih Lokasi di Mars (Data Topografi MOLA)</h2>
+                <span class="badge-info">Arahkan kursor untuk pratinjau • Klik untuk analisis analogi</span>
+            </div>
+
+            <div class="mars-selector-grid">
+                <!-- Kolom Kiri: Daftar Tombol Zona Mars -->
+                <div id="mars-location-buttons" class="location-btn-list">
+                    <!-- Tombol di-generate otomatis oleh mars-logic.js -->
+                </div>
+
+                <!-- Kolom Kanan: Panel Hover Preview (Foto + Penjelasan Singkat) -->
+                <div id="mars-hover-preview" class="preview-box">
+                    <div class="preview-image-slot">
+                        <img id="preview-img" src="" alt="Pratinjau Wilayah Mars" style="display: none;">
+                        <div id="preview-img-placeholder" class="img-placeholder-text">
+                            <span>[ Slot Foto Wilayah Mars ]</span>
+                            <small id="preview-img-hint">Arahkan kursor ke salah satu tombol lokasi di samping</small>
+                        </div>
+                    </div>
+                    <div class="preview-details">
+                        <span id="preview-zone-tag" class="zone-tag">PRATINJAU ZONA</span>
+                        <h3 id="preview-title">Pilih atau Sentuh Titik Koordinat Mars</h3>
+                        <p id="preview-coords" class="coords-text">Koordinat: - | Elevasi MOLA: -</p>
+                        <p id="preview-desc" class="desc-text">
+                            Arahkan kursor ke tombol lokasi di sebelah kiri untuk melihat karakteristik geologi dan topografi sebelum memilih.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 3A: Output Rekomendasi Analogi (Bumi) + Alasan Ilmiah -->
+        <section id="step-earth-recommendation" class="card-panel hidden">
+            <div class="section-title-bar">
+                <h2>2. Rekomendasi Analogi (Bumi)</h2>
+                <span id="match-score-badge" class="score-badge">Skor Kecocokan: -%</span>
+            </div>
+
+            <div class="recommendation-layout">
+                <!-- Ringkasan Titik Mars Terpilih -->
+                <div class="selected-mars-summary">
+                    <h4>Target Lokasi Mars Terpilih</h4>
+                    <h3 id="rec-mars-name">-</h3>
+                    <ul id="rec-mars-stats" class="stats-list"></ul>
+                </div>
+
+                <!-- Hasil Rekomendasi Bumi & Alasan -->
+                <div class="earth-match-card">
+                    <div class="earth-header">
+                        <span class="badge-earth">REKOMENDASI ANALOGI BUMI</span>
+                        <h3 id="rec-earth-name">-</h3>
+                        <p id="rec-earth-country" class="country-text">-</p>
+                    </div>
+
+                    <div class="earth-data-grid" id="rec-earth-metrics">
+                        <!-- Parameter Bumi dari dataset NASA di-render di sini -->
+                    </div>
+
+                    <div class="scientific-reason-box">
+                        <h4>🔬 Alasan Ilmiah Direkomendasikan:</h4>
+                        <ul id="rec-reasons-list">
+                            <!-- Poin alasan kecocokan ilmiah di-render di sini -->
+                        </ul>
+                    </div>
+
+                    <!-- Tombol Lanjut ke Tahap Flowchart Berikutnya -->
+                    <div class="next-action-bar">
+                        <button id="btn-proceed-flowchart" class="btn-primary">
+                            Lanjut Evaluasi Skor & Perbandingan →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Placeholder Tahap 2 (Mode Otomatis - Akan kita kerjakan setelah Tahap 1 oke) -->
+        <section id="step-auto-placeholder" class="card-panel hidden">
+            <h2>Mode Otomatis (Input Multi-Parameter Analogi)</h2>
+            <p><em>Bagian ini akan kita bangun di Tahap 2 setelah jalur Manual selesai direvisi.</em></p>
+        </section>
     </div>
+
     <script src="js/mars-logic.js"></script>
 </body>
 </html>

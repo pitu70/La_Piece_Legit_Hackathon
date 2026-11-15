@@ -74,7 +74,7 @@ const marsLocationsData = [
                 name: "Death Valley, USA",
                 type: "Extreme Heat / Evaporite",
                 country: "United States",
-                earthImagePath: "images/DeathValley_USA.png",
+                earthImagePath: "images/Death_Valley_USA.png",
                 elevation: 281,
                 slope: 0.18,
                 roughness: 4.99,
